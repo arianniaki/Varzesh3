@@ -17,6 +17,8 @@ class NewsPaperTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.rowHeight = 200;
+        //Navigation bar coloring
+//        navigationController!.navigationBar.barTintColor = UIColor(red: 122.0/255, green: 123.0/255, blue: 125.0/255, alpha: 1.0)
 
         print("newspaper tableview contrller")
         

@@ -19,7 +19,6 @@ class NewsPaperViewController: UIViewController,UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadNewsPaperImage(newspaper!.html)
         
         // Do any additional setup after loading the view.

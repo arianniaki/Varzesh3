@@ -77,7 +77,8 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         cell.ScheduleLabel.text = self.items[indexPath.item]
-        cell.backgroundColor = UIColor.lightGrayColor() // make cell more visible in our example project
+
+        cell.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249.0/255, alpha: 1.0) // make cell more visible in our example project
         return cell
     }
     
