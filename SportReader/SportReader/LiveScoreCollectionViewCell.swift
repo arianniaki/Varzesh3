@@ -13,4 +13,5 @@ class LiveScoreCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var Team1: UILabel!
     @IBOutlet weak var Team2: UILabel!
     @IBOutlet weak var LiveScore: UILabel!
+    @IBOutlet weak var MatchStatus: UILabel!
 }

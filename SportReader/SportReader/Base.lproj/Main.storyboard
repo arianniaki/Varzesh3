@@ -281,6 +281,12 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqK-A1-kjp">
+                                                    <rect key="frame" x="142" y="8" width="165" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.26471277915376479" green="0.71774839743589736" blue="0.23723925667193971" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -300,6 +306,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="LiveScore" destination="laZ-9L-irx" id="Dj7-rz-Zxd"/>
+                                            <outlet property="MatchStatus" destination="vqK-A1-kjp" id="gr6-5p-9NP"/>
                                             <outlet property="Team1" destination="JIn-cC-4a9" id="b0M-Lz-sUX"/>
                                             <outlet property="Team2" destination="jbj-NG-hoj" id="F0q-6G-5kd"/>
                                         </connections>
@@ -327,6 +334,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="livescoreCollectionView" destination="qb0-Dp-WcJ" id="UC7-Od-7Qr"/>
                         <outlet property="refreshScore" destination="Mvb-xm-8AE" id="FL8-jM-4zh"/>
                     </connections>
                 </viewController>
