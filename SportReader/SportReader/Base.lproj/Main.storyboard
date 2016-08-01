@@ -287,6 +287,18 @@
                                                     <color key="textColor" red="0.26471277915376479" green="0.71774839743589736" blue="0.23723925667193971" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59Z-fh-zxi">
+                                                    <rect key="frame" x="138" y="103" width="100" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ob2-G8-qF3">
+                                                    <rect key="frame" x="252" y="103" width="55" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -305,10 +317,12 @@
                                             <constraint firstItem="laZ-9L-irx" firstAttribute="centerX" secondItem="dhu-ls-I4h" secondAttribute="centerX" id="zPZ-sQ-dRi"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="GameTime" destination="Ob2-G8-qF3" id="O8R-dT-nM1"/>
                                             <outlet property="LiveScore" destination="laZ-9L-irx" id="Dj7-rz-Zxd"/>
                                             <outlet property="MatchStatus" destination="vqK-A1-kjp" id="gr6-5p-9NP"/>
                                             <outlet property="Team1" destination="JIn-cC-4a9" id="b0M-Lz-sUX"/>
                                             <outlet property="Team2" destination="jbj-NG-hoj" id="F0q-6G-5kd"/>
+                                            <outlet property="gameDate" destination="59Z-fh-zxi" id="0rh-Wb-Xna"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -483,11 +497,11 @@
             </objects>
             <point key="canvasLocation" x="377" y="1944"/>
         </scene>
-        <!--Item-->
+        <!--Live Score-->
         <scene sceneID="C1k-b2-4Zu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y2u-Jx-6o2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="MJZ-dz-5aq"/>
+                    <tabBarItem key="tabBarItem" title="Live Score" image="livescore" id="MJZ-dz-5aq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QPn-jJ-i17">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -506,6 +520,7 @@
     <resources>
         <image name="Schedule" width="24" height="24"/>
         <image name="chrome reader" width="24" height="24"/>
+        <image name="livescore" width="24" height="24"/>
         <image name="newspaper" width="24" height="24"/>
     </resources>
 </document>

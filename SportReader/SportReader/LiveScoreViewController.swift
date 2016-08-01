@@ -18,6 +18,8 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
     var items_team2 = [String]()
     var items_score = [String]()
     var items_matchstatus = [String]()
+    var items_gamedate = [String]()
+    var items_gametime = [String]()
 
 
     
@@ -30,6 +32,7 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
         print(items_team2)
 //        print(items_score)
         print("-----22")
+        print(items_gamedate)
 
         // Do any additional setup after loading the view.
     }
@@ -72,17 +75,21 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
              let livescorelink=(doc_livescore.at_xpath("//div[@id='main']")?.toHTML)
             
             let allmatches = livescorelink!.componentsSeparatedByString("<div class=\"stage-wrapper sport0\"")
-            
             for item in allmatches
             {
-                //                print(item)
                 print("+__________________+")
-                let evenmatches = item.componentsSeparatedByString("<div class=\"match-row  even-color")
+                let matches = item.componentsSeparatedByString("<div class=\"match-row")
                 
-                let oddmatches = item.componentsSeparatedByString("<div class=\"match-row  odd-color")
+//                let oddmatches = item.componentsSeparatedByString("<div class=\"match-row  odd-color")
 
-                for match in evenmatches
+                
+                print(matches.count)
+                
+//                print("ODD MATHCES")
+//                print(oddmatches.count)
+                for match in matches
                 {
+                    
 //                    print(match)
                     let html_news = match
                     if let htmlDoc = HTML(html: html_news, encoding: NSUTF8StringEncoding) {
@@ -91,119 +98,86 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
 //                        print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content)
 
                         if(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname right']")?.content != nil){
-                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname right']")?.content)
+//                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname right']")?.content)
                             let result = htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname right']")?.content!
                             
                             items_team1.append(result!)
                             
-                            print("+++++++++++++++++++++++++++++++++++++")
+                            
                         }
                         
                         if(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname left']")?.content != nil){
-                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname left']")?.content)
+//                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname left']")?.content)
                             let result = htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname left']")?.content!
                             
                             items_team2.append(result!)
                             
-                            print("+++++++++++++++++++++++++++++++++++++")
+                            
 
                         
                     }
                         
                         if(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content != nil){
-                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content)
+//                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content)
                             let result = htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content!
-                            print("INE")
+                            
                             
                             let trimmed=result!.stringByReplacingOccurrencesOfString("\r\n", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
 //                            print(trimmed.stringByReplacingOccurrencesOfString("\n", withString: ""))
                             items_score.append(trimmed.stringByReplacingOccurrencesOfString("\n", withString: "").stringByReplacingOccurrencesOfString("                                                    ", withString: ""))
                             
-                            print("+++++++++++++++++++++++++++++++++++++")
+                            
                             
                             
                         }
                         
                         if(htmlDoc.at_xpath("//div[@class='match-status']//span")?.content != nil){
-                            print(htmlDoc.at_xpath("//div[@class='match-status']//span")?.content)
+//                            print(htmlDoc.at_xpath("//div[@class='match-status']//span")?.content)
                             let result = htmlDoc.at_xpath("//div[@class='match-status']//span")?.content!
-                            print("status INE")
+
                             let trimmed=result!.stringByReplacingOccurrencesOfString("\r\n", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
 
                             items_matchstatus.append(trimmed)
                             
-                            print("+++++++++++++++++++++++++++++++++++++")
+                            
+                            
+                            
+                        }
+                        
+                        if(htmlDoc.at_xpath("//div[@class='start-date']")?.content != nil){
+                            
+//                            print(htmlDoc.at_xpath("//div[@class='start-date']")?.content)
+                            let result = htmlDoc.at_xpath("//div[@class='start-date']")?.content!
+                            
+                            let trimmed=result!.stringByReplacingOccurrencesOfString("\n", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
+                            
+                            items_gamedate.append(trimmed)
+                            
+                            
+                            
+                            
+                        }
+
+                        if(htmlDoc.at_xpath("//div[@class='start-time']")?.content != nil){
+                            
+                            print(htmlDoc.at_xpath("//div[@class='start-time']")?.content)
+                            let result = htmlDoc.at_xpath("//div[@class='start-time']")?.content!
+                            
+                            let trimmed=result!.stringByReplacingOccurrencesOfString("\n", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
+                            
+                            items_gametime.append(trimmed)
+                            
+                            
                             
                             
                         }
 
 
                 }
-                print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+                
             
             }
                 
-                
-                for match in oddmatches
-                {
-                    //                    print(match)
-                    let html_news = match
-                    if let htmlDoc = HTML(html: html_news, encoding: NSUTF8StringEncoding) {
-                        //                        print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname right']")?.toHTML)
-                        //                        print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname left']")?.toHTML)
-                        //                        print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content)
-                        
-                        if(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname right']")?.content != nil){
-                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname right']")?.content)
-                            let result = htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname right']")?.content!
-                            
-                            items_team1.append(result!)
-                            
-                            print("+++++++++++++++++++++++++++++++++++++")
-                        }
-                        
-                        if(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname left']")?.content != nil){
-                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname left']")?.content)
-                            let result = htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname left']")?.content!
-                            
-                            items_team2.append(result!)
-                            
-                            print("+++++++++++++++++++++++++++++++++++++")
-                            
-                            
-                        }
-                        
-                        if(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content != nil){
-                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content)
-                            let result = htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content!
-                            print("INE")
-                            
-                            let trimmed=result!.stringByReplacingOccurrencesOfString("\r\n", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
-                            //                            print(trimmed.stringByReplacingOccurrencesOfString("\n", withString: ""))
-                            items_score.append(trimmed.stringByReplacingOccurrencesOfString("\n", withString: "").stringByReplacingOccurrencesOfString("                                                    ", withString: ""))
-                            
-                            print("+++++++++++++++++++++++++++++++++++++")
-                            
-                            
-                        }
-                        
-                        if(htmlDoc.at_xpath("//div[@class='match-status']//span")?.content != nil){
-                            print(htmlDoc.at_xpath("//div[@class='match-status']//span")?.content)
-                            let result = htmlDoc.at_xpath("//div[@class='match-status']//span")?.content!
-                            print("status INE")
-                            let trimmed=result!.stringByReplacingOccurrencesOfString("\r\n", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
-                            items_matchstatus.append(trimmed)
-                            
-                            print("+++++++++++++++++++++++++++++++++++++")
-                            
-                            
-                        }
-                        
-                    }
-                    print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-                    
-                }
-    
             }
         }
     }
@@ -226,6 +200,9 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
         cell.Team1.text = self.items_team1[indexPath.item]
         cell.LiveScore.text = self.items_score[indexPath.item]
         cell.MatchStatus.text = self.items_matchstatus[indexPath.item]
+        cell.gameDate.text = self.items_gamedate[indexPath.item]
+        cell.GameTime.text = self.items_gametime[indexPath.item]
+
 
         
         cell.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249.0/255, alpha: 1.0) // make cell more visible in our example project
