@@ -10,6 +10,8 @@
 		4481835275AE0DBED2195DA5 /* Pods_SportReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C6F63A3113B959306152A74 /* Pods_SportReader.framework */; };
 		D20AE45E1D4E0955002E8298 /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20AE45D1D4E0955002E8298 /* ScheduleCollectionViewCell.swift */; };
 		D20AE4601D4E0970002E8298 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20AE45F1D4E0970002E8298 /* ScheduleViewController.swift */; };
+		D20AE4621D4FA31B002E8298 /* LiveScoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20AE4611D4FA31B002E8298 /* LiveScoreCollectionViewCell.swift */; };
+		D20AE4641D4FA37C002E8298 /* LiveScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20AE4631D4FA37C002E8298 /* LiveScoreViewController.swift */; };
 		D219C4AE1D4CEB44006A0B26 /* Varzesh3Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D219C4AD1D4CEB44006A0B26 /* Varzesh3Launch.storyboard */; };
 		D2AC97F91D4D1B25000C3D85 /* NewsPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC97F81D4D1B25000C3D85 /* NewsPaperViewController.swift */; };
 		D2AC97FB1D4D1E8C000C3D85 /* NewsPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC97FA1D4D1E8C000C3D85 /* NewsPaper.swift */; };
@@ -30,6 +32,8 @@
 		863919B2B49B30CE49F45263 /* Pods-SportReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportReader/Pods-SportReader.release.xcconfig"; sourceTree = "<group>"; };
 		D20AE45D1D4E0955002E8298 /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		D20AE45F1D4E0970002E8298 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		D20AE4611D4FA31B002E8298 /* LiveScoreCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveScoreCollectionViewCell.swift; sourceTree = "<group>"; };
+		D20AE4631D4FA37C002E8298 /* LiveScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveScoreViewController.swift; sourceTree = "<group>"; };
 		D219C4AD1D4CEB44006A0B26 /* Varzesh3Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Varzesh3Launch.storyboard; sourceTree = "<group>"; };
 		D2AC97F81D4D1B25000C3D85 /* NewsPaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPaperViewController.swift; sourceTree = "<group>"; };
 		D2AC97FA1D4D1E8C000C3D85 /* NewsPaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPaper.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				D2AC98001D4DB6EA000C3D85 /* NewsPaperTableViewController.swift */,
 				D2D57E041D4BA9E70006B4E9 /* AppDelegate.swift */,
 				D2D57E081D4BA9E70006B4E9 /* Main.storyboard */,
+				D20AE4631D4FA37C002E8298 /* LiveScoreViewController.swift */,
+				D20AE4611D4FA31B002E8298 /* LiveScoreCollectionViewCell.swift */,
 				D20AE45F1D4E0970002E8298 /* ScheduleViewController.swift */,
 				D20AE45D1D4E0955002E8298 /* ScheduleCollectionViewCell.swift */,
 				D2AC97F81D4D1B25000C3D85 /* NewsPaperViewController.swift */,
@@ -251,7 +257,9 @@
 				D2AC97FB1D4D1E8C000C3D85 /* NewsPaper.swift in Sources */,
 				D2AC97FF1D4D245D000C3D85 /* NewsPaperTableViewCell.swift in Sources */,
 				D2D57E1E1D4BB71B0006B4E9 /* NewsTableViewController.swift in Sources */,
+				D20AE4621D4FA31B002E8298 /* LiveScoreCollectionViewCell.swift in Sources */,
 				D2D57E051D4BA9E70006B4E9 /* AppDelegate.swift in Sources */,
+				D20AE4641D4FA37C002E8298 /* LiveScoreViewController.swift in Sources */,
 				D2AC98011D4DB6EA000C3D85 /* NewsPaperTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

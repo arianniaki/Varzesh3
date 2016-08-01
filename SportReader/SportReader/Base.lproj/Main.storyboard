@@ -234,6 +234,106 @@
             </objects>
             <point key="canvasLocation" x="2319" y="1153"/>
         </scene>
+        <!--Live Score View Controller-->
+        <scene sceneID="0po-BB-0m0">
+            <objects>
+                <viewController id="BQS-TZ-65c" customClass="LiveScoreViewController" customModule="SportReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cpt-HW-xRy"/>
+                        <viewControllerLayoutGuide type="bottom" id="IVe-fD-h1H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7PU-0G-gFX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qb0-Dp-WcJ">
+                                <rect key="frame" x="20" y="30" width="560" height="570"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qwu-Q7-zFR">
+                                    <size key="itemSize" width="448" height="143"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LiveCell" id="dhu-ls-I4h" customClass="LiveScoreCollectionViewCell" customModule="SportReader" customModuleProvider="target">
+                                        <rect key="frame" x="56" y="64" width="448" height="143"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="143"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIn-cC-4a9">
+                                                    <rect key="frame" x="266" y="61" width="116" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbj-NG-hoj">
+                                                    <rect key="frame" x="71" y="61" width="116" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laZ-9L-irx">
+                                                    <rect key="frame" x="197" y="61" width="55" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="jbj-NG-hoj" firstAttribute="leading" secondItem="dhu-ls-I4h" secondAttribute="leadingMargin" constant="63" id="0fE-L2-jTo"/>
+                                            <constraint firstItem="JIn-cC-4a9" firstAttribute="leading" secondItem="dhu-ls-I4h" secondAttribute="leadingMargin" constant="258" id="M2s-4C-hRD"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="jbj-NG-hoj" secondAttribute="bottom" constant="53" id="Mcd-WT-8D8"/>
+                                            <constraint firstItem="JIn-cC-4a9" firstAttribute="leading" secondItem="laZ-9L-irx" secondAttribute="trailing" constant="14" id="Njd-4H-5JV"/>
+                                            <constraint firstItem="jbj-NG-hoj" firstAttribute="top" secondItem="dhu-ls-I4h" secondAttribute="topMargin" constant="53" id="OBg-Lj-ZTM"/>
+                                            <constraint firstItem="JIn-cC-4a9" firstAttribute="top" secondItem="dhu-ls-I4h" secondAttribute="topMargin" constant="53" id="Q4H-50-VYS"/>
+                                            <constraint firstItem="jbj-NG-hoj" firstAttribute="baseline" secondItem="laZ-9L-irx" secondAttribute="baseline" id="QTl-ZY-JI6"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="JIn-cC-4a9" secondAttribute="bottom" constant="53" id="afP-Dt-HeD"/>
+                                            <constraint firstItem="laZ-9L-irx" firstAttribute="leading" secondItem="jbj-NG-hoj" secondAttribute="trailing" constant="10" id="k02-sb-RpB"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="JIn-cC-4a9" secondAttribute="trailing" constant="58" id="thI-z3-2zy"/>
+                                            <constraint firstItem="jbj-NG-hoj" firstAttribute="centerY" secondItem="dhu-ls-I4h" secondAttribute="centerY" id="tsu-F4-bhQ"/>
+                                            <constraint firstItem="laZ-9L-irx" firstAttribute="centerX" secondItem="dhu-ls-I4h" secondAttribute="centerX" id="zPZ-sQ-dRi"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="LiveScore" destination="laZ-9L-irx" id="Dj7-rz-Zxd"/>
+                                            <outlet property="Team1" destination="JIn-cC-4a9" id="b0M-Lz-sUX"/>
+                                            <outlet property="Team2" destination="jbj-NG-hoj" id="F0q-6G-5kd"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BQS-TZ-65c" id="9ay-Fm-czQ"/>
+                                    <outlet property="delegate" destination="BQS-TZ-65c" id="Lsh-BN-Jte"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="qb0-Dp-WcJ" secondAttribute="bottom" id="0yl-cA-mHC"/>
+                            <constraint firstItem="qb0-Dp-WcJ" firstAttribute="trailing" secondItem="7PU-0G-gFX" secondAttribute="trailingMargin" id="mzl-zk-Q5a"/>
+                            <constraint firstItem="qb0-Dp-WcJ" firstAttribute="leading" secondItem="7PU-0G-gFX" secondAttribute="leadingMargin" id="wnl-WH-eGO"/>
+                            <constraint firstItem="qb0-Dp-WcJ" firstAttribute="top" secondItem="7PU-0G-gFX" secondAttribute="topMargin" constant="30" id="x93-pR-Qef"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="28E-MD-g3B">
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="Mvb-xm-8AE">
+                            <connections>
+                                <action selector="reloadlivescore:" destination="BQS-TZ-65c" id="7T4-b9-PhC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="refreshScore" destination="Mvb-xm-8AE" id="FL8-jM-4zh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ODr-d7-acS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1979" y="2560"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ned-gB-TeE">
             <objects>
@@ -247,6 +347,7 @@
                         <segue destination="85a-mW-UnA" kind="relationship" relationship="viewControllers" id="Xxo-V5-j5M"/>
                         <segue destination="R0R-Eg-7EZ" kind="relationship" relationship="viewControllers" id="tOt-Gr-xWp"/>
                         <segue destination="30X-2P-SuH" kind="relationship" relationship="viewControllers" id="pQ5-Rz-cTL"/>
+                        <segue destination="Y2u-Jx-6o2" kind="relationship" relationship="viewControllers" id="TzO-t9-xP9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PvL-nN-7Wz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -372,7 +473,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ubu-qe-KE9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="337" y="1824"/>
+            <point key="canvasLocation" x="377" y="1944"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="C1k-b2-4Zu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y2u-Jx-6o2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="MJZ-dz-5aq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QPn-jJ-i17">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BQS-TZ-65c" kind="relationship" relationship="rootViewController" id="5zh-av-KBp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ale-oK-owh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="377" y="2752"/>
         </scene>
     </scenes>
     <resources>

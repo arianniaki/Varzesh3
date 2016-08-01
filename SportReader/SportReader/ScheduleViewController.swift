@@ -20,7 +20,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+    
         loadschedule()
         print("-----")
         print(items)
