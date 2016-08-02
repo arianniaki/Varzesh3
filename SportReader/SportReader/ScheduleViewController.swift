@@ -12,6 +12,7 @@ import Kanna
 class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     
+    @IBOutlet weak var scheduleCollectionView: UICollectionView!
     let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
     var items = [String]()
 
@@ -28,6 +29,30 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func refreshSchedule(sender: AnyObject) {
+        items.removeAll()
+        print("REMOVED")
+        print(items)
+        self.scheduleCollectionView.reloadData()
+        
+        let alert = UIAlertController(title: nil, message: "Reloading...", preferredStyle: .Alert)
+        
+        alert.view.tintColor = UIColor.blackColor()
+        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        presentViewController(alert, animated: true, completion: nil)
+        loadschedule()
+        self.scheduleCollectionView.reloadData()
+        print("ADDED")
+        print(items)
+        dismissViewControllerAnimated(false, completion: nil)
+        
+
+    }
     func loadschedule(){
     // MARK: reading tv chedule
         let url = NSURL(string: "http://varzesh3.com")

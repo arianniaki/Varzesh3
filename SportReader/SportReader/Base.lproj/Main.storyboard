@@ -462,7 +462,16 @@
                             <constraint firstItem="xuQ-4j-TZT" firstAttribute="top" secondItem="LWa-vz-inE" secondAttribute="bottom" constant="-34" id="lC5-wY-MU8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Schedule" id="ROY-ml-Wkp"/>
+                    <navigationItem key="navigationItem" title="Schedule" id="ROY-ml-Wkp">
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="ghz-eM-bEe">
+                            <connections>
+                                <action selector="refreshSchedule:" destination="Ddi-ny-amS" id="zZx-Gf-mQQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="scheduleCollectionView" destination="xuQ-4j-TZT" id="ndt-SF-wkW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hUO-8o-81u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
