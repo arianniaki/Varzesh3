@@ -36,8 +36,12 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
 
         // Do any additional setup after loading the view.
     }
+
+
     
     @IBAction func reloadlivescore(sender: AnyObject) {
+        
+        
         items_score.removeAll()
         items_team1.removeAll()
         items_team2.removeAll()

@@ -187,7 +187,13 @@
                             <outlet property="delegate" destination="sup-rK-AwE" id="eaT-EG-Ytc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Newspapers" id="nDS-Zi-gG5"/>
+                    <navigationItem key="navigationItem" title="Newspapers" id="nDS-Zi-gG5">
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="Cj8-of-EMV">
+                            <connections>
+                                <action selector="refreshNewsPaper:" destination="sup-rK-AwE" id="Q9v-jK-HfL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySy-7k-6iB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -234,7 +240,7 @@
             </objects>
             <point key="canvasLocation" x="2319" y="1153"/>
         </scene>
-        <!--Live Score View Controller-->
+        <!--Live Score-->
         <scene sceneID="0po-BB-0m0">
             <objects>
                 <viewController id="BQS-TZ-65c" customClass="LiveScoreViewController" customModule="SportReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -249,6 +255,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qb0-Dp-WcJ">
                                 <rect key="frame" x="20" y="30" width="560" height="570"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qwu-Q7-zFR">
                                     <size key="itemSize" width="448" height="143"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -302,6 +309,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="jbj-NG-hoj" firstAttribute="leading" secondItem="dhu-ls-I4h" secondAttribute="leadingMargin" constant="63" id="0fE-L2-jTo"/>
                                             <constraint firstItem="JIn-cC-4a9" firstAttribute="leading" secondItem="dhu-ls-I4h" secondAttribute="leadingMargin" constant="258" id="M2s-4C-hRD"/>
@@ -333,6 +341,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="qb0-Dp-WcJ" secondAttribute="bottom" id="0yl-cA-mHC"/>
                             <constraint firstItem="qb0-Dp-WcJ" firstAttribute="trailing" secondItem="7PU-0G-gFX" secondAttribute="trailingMargin" id="mzl-zk-Q5a"/>
@@ -340,7 +349,7 @@
                             <constraint firstItem="qb0-Dp-WcJ" firstAttribute="top" secondItem="7PU-0G-gFX" secondAttribute="topMargin" constant="30" id="x93-pR-Qef"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="28E-MD-g3B">
+                    <navigationItem key="navigationItem" title="Live Score" id="28E-MD-g3B">
                         <barButtonItem key="rightBarButtonItem" title="Refresh" id="Mvb-xm-8AE">
                             <connections>
                                 <action selector="reloadlivescore:" destination="BQS-TZ-65c" id="7T4-b9-PhC"/>

@@ -16,10 +16,40 @@ class NewsPaperTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if Reachability.isConnectedToNetwork() == true {
+            print("Internet connection OK")
+            loadNewsPaper()
+            
+        } else {
+            print("Internet connection FAILED")
+            var alert=UIAlertController(title: "No Internet Connection", message: "Turn on cellular data or use Wi-Fi to access data.", preferredStyle: UIAlertControllerStyle.Alert);
+            
+            
+            
+            func SettingsHandler(actionTarget: UIAlertAction){
+                UIApplication.sharedApplication().openURL(NSURL(string:"prefs:root=Cellular")!)
+            }
+            func OKHandler(actionTarget: UIAlertAction){
+            }
+            //event handler with predefined function
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: OKHandler));
+            alert.addAction(UIAlertAction(title: "Settings", style: UIAlertActionStyle.Default, handler: SettingsHandler));
+            
+            
+            presentViewController(alert, animated: true, completion: nil);
+            
+        
+            
+        }
+        
         self.tableView.rowHeight = 200;
         //Navigation bar coloring
 //        navigationController!.navigationBar.barTintColor = UIColor(red: 122.0/255, green: 123.0/255, blue: 125.0/255, alpha: 1.0)
 
+      
+    }
+    
+    func loadNewsPaper(){
         print("newspaper tableview contrller")
         
         let newspaper = NSURL(string: "http://www.varzesh3.com/newspaper")
@@ -59,6 +89,37 @@ class NewsPaperTableViewController: UITableViewController {
             
             
         }
+
+    }
+    
+    @IBAction func refreshNewsPaper(sender: AnyObject) {
+        
+        newspapers.removeAll()
+        
+        
+        
+        print("REMOVED")
+        
+        self.tableView.reloadData()
+        
+        let alert = UIAlertController(title: nil, message: "Reloading...", preferredStyle: .Alert)
+        
+        alert.view.tintColor = UIColor.blackColor()
+        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        presentViewController(alert, animated: true, completion: nil)
+        loadNewsPaper()
+        self.tableView.reloadData()
+        print("ADDED")
+        print(newspapers)
+        dismissViewControllerAnimated(false, completion: nil)
+        
+        
+
     }
     
     
