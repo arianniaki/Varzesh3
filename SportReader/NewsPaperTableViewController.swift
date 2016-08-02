@@ -16,6 +16,14 @@ class NewsPaperTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let swiftColor = UIColor(red: 0, green: 153/255, blue: 153/255, alpha: 1)
+        navigationController!.navigationBar.barTintColor = swiftColor
+
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+
+        navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+
+        
         if Reachability.isConnectedToNetwork() == true {
             print("Internet connection OK")
             loadNewsPaper()

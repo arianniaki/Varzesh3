@@ -40,7 +40,13 @@ class NewsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let swiftColor = UIColor(red: 0, green: 153/255, blue: 153/255, alpha: 1)
+        navigationController!.navigationBar.barTintColor = swiftColor
+
+        navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+
         loadNews()
 
     }

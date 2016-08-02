@@ -19,9 +19,13 @@ class NewsPaperViewController: UIViewController,UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadNewsPaperImage(newspaper!.html)
         
         // Do any additional setup after loading the view.
+    }
+    @IBAction func shareButton(sender: AnyObject) {
+        displayShareSheet(newspaper!.html)
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +33,10 @@ class NewsPaperViewController: UIViewController,UINavigationControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func displayShareSheet(shareContent:String) {
+        let activityViewController = UIActivityViewController(activityItems: [shareContent as NSString], applicationActivities: nil)
+        presentViewController(activityViewController, animated: true, completion: {})
+    }
 
     func loadNewsPaperImage(html: String)
     {

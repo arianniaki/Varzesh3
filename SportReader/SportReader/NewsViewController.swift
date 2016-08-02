@@ -28,6 +28,15 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
         loadNewsImage(news!.html)
     }
     
+
+    @IBAction func shareButton(sender: AnyObject) {
+    displayShareSheet(news!.html)
+    }
+    
+    func displayShareSheet(shareContent:String) {
+        let activityViewController = UIActivityViewController(activityItems: [shareContent as NSString], applicationActivities: nil)
+        presentViewController(activityViewController, animated: true, completion: {})
+    }
     func loadNewsImage(html: String)
     {
         let url = NSURL(string: html)
