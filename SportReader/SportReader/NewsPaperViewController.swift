@@ -15,13 +15,27 @@ class NewsPaperViewController: UIViewController,UINavigationControllerDelegate {
 
     var newspaper : NewsPaper?
     
+    
     @IBOutlet weak var NewsPaperImage: UIImageView!
     
+    let alertController = UIAlertController(title: nil, message: "Loading\n\n", preferredStyle: UIAlertControllerStyle.Alert)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadNewsPaperImage(newspaper!.html)
         
+        
+        let spinnerIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        
+        spinnerIndicator.center = CGPointMake(135.0, 65.5)
+        spinnerIndicator.color = UIColor.blackColor()
+        spinnerIndicator.startAnimating()
+        
+        alertController.view.addSubview(spinnerIndicator)
+        self.presentViewController(alertController, animated: false, completion: nil)
+
+        loadNewsPaperImage(newspaper!.html)
+
         // Do any additional setup after loading the view.
     }
     @IBAction func shareButton(sender: AnyObject) {
@@ -75,6 +89,8 @@ class NewsPaperViewController: UIViewController,UINavigationControllerDelegate {
                 func display_image()
                 {
                     self.NewsPaperImage.image = UIImage(data: data!)
+                    self.alertController.dismissViewControllerAnimated(true, completion: nil)
+
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), display_image)
@@ -83,6 +99,7 @@ class NewsPaperViewController: UIViewController,UINavigationControllerDelegate {
         }
         
         task.resume()
+
     }
 
     

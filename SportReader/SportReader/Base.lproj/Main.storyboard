@@ -226,10 +226,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WFW-1u-UEE">
-                                <rect key="frame" x="20" y="84" width="550" height="452"/>
+                                <rect key="frame" x="20" y="84" width="550" height="372"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fg5-Pu-iXE">
-                                        <rect key="frame" x="0.0" y="0.0" width="550" height="452"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="550" height="372"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -237,13 +237,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="WFW-1u-UEE" firstAttribute="top" secondItem="DEU-32-ami" secondAttribute="bottom" constant="20" id="A8U-lT-kVb"/>
-                            <constraint firstItem="bRD-I4-p69" firstAttribute="top" secondItem="Fg5-Pu-iXE" secondAttribute="bottom" constant="20" id="Ixh-jV-pRp"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Fg5-Pu-iXE" secondAttribute="leading" id="M0J-mt-BWT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Fg5-Pu-iXE" secondAttribute="trailing" constant="10" id="V3J-z2-daD"/>
-                            <constraint firstItem="Fg5-Pu-iXE" firstAttribute="top" secondItem="DEU-32-ami" secondAttribute="bottom" constant="20" id="cPn-zI-Kfc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WFW-1u-UEE" secondAttribute="trailing" constant="10" id="hSQ-QF-ch4"/>
                             <constraint firstItem="WFW-1u-UEE" firstAttribute="leading" secondItem="Kiw-7Y-sze" secondAttribute="leadingMargin" id="n8r-up-exk"/>
-                            <constraint firstItem="bRD-I4-p69" firstAttribute="top" secondItem="WFW-1u-UEE" secondAttribute="bottom" constant="20" id="srp-se-aMD"/>
+                            <constraint firstItem="bRD-I4-p69" firstAttribute="top" secondItem="WFW-1u-UEE" secondAttribute="bottom" constant="100" id="srp-se-aMD"/>
                         </constraints>
                     </view>
                     <toolbarItems>
