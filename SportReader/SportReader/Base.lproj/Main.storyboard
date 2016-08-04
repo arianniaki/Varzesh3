@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sox-Bl-1Ky">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -101,8 +100,8 @@
                                     <constraint firstItem="k1a-y3-xu6" firstAttribute="trailing" secondItem="1pT-9M-9Lp" secondAttribute="trailingMargin" id="p9g-wa-nEM"/>
                                 </constraints>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-wE-nSP">
-                                <rect key="frame" x="538" y="99" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-wE-nSP">
+                                <rect key="frame" x="580" y="99" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -128,9 +127,7 @@
                             <constraint firstItem="k1a-y3-xu6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="wjq-Zz-HWd"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="uzS-th-Mhv"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="NWh-lB-xSc">
                         <barButtonItem key="rightBarButtonItem" image="dots" id="Hhz-cO-nzN">
                             <connections>
@@ -242,9 +239,7 @@
                             <constraint firstItem="bRD-I4-p69" firstAttribute="top" secondItem="WFW-1u-UEE" secondAttribute="bottom" constant="100" id="srp-se-aMD"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="zqN-xF-8xw"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="NAE-2K-BC5">
                         <barButtonItem key="rightBarButtonItem" image="dots" id="cKI-5R-D2z">
                             <connections>
@@ -349,8 +344,8 @@
                                             <outlet property="GameTime" destination="Ob2-G8-qF3" id="O8R-dT-nM1"/>
                                             <outlet property="LiveScore" destination="laZ-9L-irx" id="Dj7-rz-Zxd"/>
                                             <outlet property="MatchStatus" destination="vqK-A1-kjp" id="gr6-5p-9NP"/>
-                                            <outlet property="Team1" destination="JIn-cC-4a9" id="b0M-Lz-sUX"/>
-                                            <outlet property="Team2" destination="jbj-NG-hoj" id="F0q-6G-5kd"/>
+                                            <outlet property="Team1" destination="jbj-NG-hoj" id="wcP-nm-Z6L"/>
+                                            <outlet property="Team2" destination="JIn-cC-4a9" id="Rse-6j-x2k"/>
                                             <outlet property="gameDate" destination="59Z-fh-zxi" id="0rh-Wb-Xna"/>
                                         </connections>
                                     </collectionViewCell>
@@ -397,9 +392,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="85a-mW-UnA" kind="relationship" relationship="viewControllers" id="Xxo-V5-j5M"/>
                         <segue destination="R0R-Eg-7EZ" kind="relationship" relationship="viewControllers" id="tOt-Gr-xWp"/>
                         <segue destination="30X-2P-SuH" kind="relationship" relationship="viewControllers" id="pQ5-Rz-cTL"/>
+                        <segue destination="85a-mW-UnA" kind="relationship" relationship="viewControllers" id="Xxo-V5-j5M"/>
                         <segue destination="Y2u-Jx-6o2" kind="relationship" relationship="viewControllers" id="TzO-t9-xP9"/>
                     </connections>
                 </tabBarController>
@@ -443,21 +438,21 @@
                                 <rect key="frame" x="20" y="30" width="560" height="511"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7IA-8b-Nx2">
-                                    <size key="itemSize" width="325" height="150"/>
+                                    <size key="itemSize" width="448" height="172"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="UC1-S5-REm" customClass="ScheduleCollectionViewCell" customModule="SportReader" customModuleProvider="target">
-                                        <rect key="frame" x="118" y="64" width="325" height="150"/>
+                                        <rect key="frame" x="56" y="64" width="448" height="172"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="325" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="172"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAa-OR-qvH">
-                                                    <rect key="frame" x="8" y="8" width="309" height="134"/>
+                                                    <rect key="frame" x="70" y="19" width="309" height="134"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>

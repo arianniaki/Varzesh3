@@ -8,6 +8,8 @@
 
 import UIKit
 import Kanna
+import AVKit
+import AVFoundation
 
 class NewsViewController: UIViewController,UINavigationControllerDelegate {
 
@@ -22,10 +24,19 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print(news!.type)
         titleLabel.text=news?.title
+        
+        if(news!.type == "News")
+        {
         loadNewsText(news!.html)
         loadNewsDate(news!.html)
         loadNewsImage(news!.html)
+        }
+        else
+        {
+         loadNewsVideo(news!.html)
+        }
     }
     
 
@@ -37,6 +48,36 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
         let activityViewController = UIActivityViewController(activityItems: [shareContent as NSString], applicationActivities: nil)
         presentViewController(activityViewController, animated: true, completion: {})
     }
+    
+    
+    func loadNewsVideo(html: String)
+    {
+        let url = NSURL(string: html)
+        
+        if let doc_newsinner = HTML(url: url!, encoding: NSUTF8StringEncoding) {
+            print("------")
+            if doc_newsinner.at_xpath("//div[@class='container main']//div[@class='row']//div[@class='col-xs-12 col-md-8 col-lg-9 pull-right']//div[@class='video-player']")?.toHTML != nil
+            {
+                
+                
+                
+                let innernews=(doc_newsinner.at_xpath("//div[@class='container main']//div[@class='row']//div[@class='col-xs-12 col-md-8 col-lg-9 pull-right']//div[@class='video-player']//video//@src")?.content)
+                print(innernews)
+                
+                let videoURL = NSURL(string: innernews!)
+                let player = AVPlayer(URL: videoURL!)
+                let playerViewController = AVPlayerViewController()
+                playerViewController.player = player
+                self.presentViewController(playerViewController, animated: true) {
+                    playerViewController.player!.play()
+                }
+                
+            }
+        }
+        
+    }
+
+    
     func loadNewsImage(html: String)
     {
         let url = NSURL(string: html)

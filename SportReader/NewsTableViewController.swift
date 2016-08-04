@@ -40,7 +40,7 @@ class NewsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let swiftColor = UIColor(red: 0, green: 153/255, blue: 153/255, alpha: 1)
+        let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
         navigationController!.navigationBar.barTintColor = swiftColor
 
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -68,15 +68,30 @@ class NewsTableViewController: UITableViewController {
             let Arr_news = lis_news!.componentsSeparatedByString("<li ")
             print(Arr_news.count)
             for a_news in Arr_news {
+                print(a_news)
+                print("0000")
                 let html_news = a_news
+                if(a_news.containsString("filter=\"4\""))
+                {
                 if let htmlDoc = HTML(html: html_news, encoding: NSUTF8StringEncoding) {
                     if htmlDoc.at_xpath("//p//a/@title")?.toHTML != nil
                     {
 //                        print(htmlDoc.at_xpath("//p//a/@title")?.toHTML)
-                        news.append(News(title:(htmlDoc.at_xpath("//p//a/@title")!.content)!, html:(htmlDoc.at_xpath("//p//a/@href")!.content)!))
+                        news.append(News(title:(htmlDoc.at_xpath("//p//a/@title")!.content)!, html:(htmlDoc.at_xpath("//p//a/@href")!.content)!, type: "Video"))
                     }
                 }
-                
+                }
+                else
+                {
+                    if let htmlDoc = HTML(html: html_news, encoding: NSUTF8StringEncoding) {
+                        if htmlDoc.at_xpath("//p//a/@title")?.toHTML != nil
+                        {
+                            //                        print(htmlDoc.at_xpath("//p//a/@title")?.toHTML)
+                            news.append(News(title:(htmlDoc.at_xpath("//p//a/@title")!.content)!, html:(htmlDoc.at_xpath("//p//a/@href")!.content)!,type: "News"))
+                        }
+                    }
+
+                }
             }
             tableView.reloadData()
 

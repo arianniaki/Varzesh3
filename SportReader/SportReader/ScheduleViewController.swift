@@ -21,7 +21,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let swiftColor = UIColor(red: 0, green: 153/255, blue: 153/255, alpha: 1)
+        let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
         navigationController!.navigationBar.barTintColor = swiftColor
 
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -59,6 +59,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
         
 
     }
+    
     func loadschedule(){
     // MARK: reading tv chedule
         let url = NSURL(string: "http://varzesh3.com")
@@ -69,10 +70,9 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
             
             print("____W_W_W_W")
             let Arr = lis!.componentsSeparatedByString("<p>")
+            print(Arr.count)
             for a in Arr {
                 let html = a
-                //                print(a)
-                //                print("NETX_______________")
                 if let htmlDoc = HTML(html: html, encoding: NSUTF8StringEncoding) {
                     
                     if(htmlDoc.at_xpath("//a")?.content != nil){
