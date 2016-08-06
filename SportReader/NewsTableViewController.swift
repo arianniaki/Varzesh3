@@ -46,8 +46,11 @@ class NewsTableViewController: UITableViewController {
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        dispatch_async(dispatch_get_main_queue(), {
+            self.loadNews()
+        })
 
-        loadNews()
+        
 
     }
     
@@ -58,6 +61,18 @@ class NewsTableViewController: UITableViewController {
         news.removeAll()
 
         tableView.reloadData()
+        
+        let alert = UIAlertController(title: nil, message: "Reloading...", preferredStyle: .Alert)
+        
+        alert.view.tintColor = UIColor.blackColor()
+        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        presentViewController(alert, animated: true, completion: nil)
+        
 
         let url = NSURL(string: "http://varzesh3.com")
 
@@ -94,6 +109,8 @@ class NewsTableViewController: UITableViewController {
                 }
             }
             tableView.reloadData()
+            dismissViewControllerAnimated(false, completion: nil)
+
 
             
         }

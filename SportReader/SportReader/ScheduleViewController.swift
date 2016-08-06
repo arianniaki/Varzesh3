@@ -21,6 +21,11 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        dispatch_async(dispatch_get_main_queue(), {
+            self.reloadfunc()
+        })
+
+        
         let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
         navigationController!.navigationBar.barTintColor = swiftColor
 
@@ -28,20 +33,20 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
 
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 
-        loadschedule()
         print("-----")
         print(items)
 
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func refreshSchedule(sender: AnyObject) {
+    func reloadfunc()
+    {
         items.removeAll()
         print("REMOVED")
         print(items)
         self.scheduleCollectionView.reloadData()
         
-        let alert = UIAlertController(title: nil, message: "Reloading...", preferredStyle: .Alert)
+        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .Alert)
         
         alert.view.tintColor = UIColor.blackColor()
         let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
@@ -58,6 +63,9 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
         dismissViewControllerAnimated(false, completion: nil)
         
 
+    }
+    @IBAction func refreshSchedule(sender: AnyObject) {
+       reloadfunc()
     }
     
     func loadschedule(){

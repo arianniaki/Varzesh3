@@ -25,6 +25,10 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dispatch_async(dispatch_get_main_queue(), {
+            self.reloadfunc()
+        })
+        
         let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
         navigationController!.navigationBar.barTintColor = swiftColor
 
@@ -33,7 +37,6 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 
         
-        loadlivescore()
         print("-----11")
         print(items_team1)
         print(items_team2)
@@ -44,11 +47,8 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
         // Do any additional setup after loading the view.
     }
 
-
-    
-    @IBAction func reloadlivescore(sender: AnyObject) {
-        
-        
+    func reloadfunc()
+    {
         items_score.removeAll()
         items_team1.removeAll()
         items_team2.removeAll()
@@ -57,7 +57,8 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
         print(items_matchstatus)
         self.livescoreCollectionView.reloadData()
         
-        let alert = UIAlertController(title: nil, message: "Reloading...", preferredStyle: .Alert)
+        
+        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .Alert)
         
         alert.view.tintColor = UIColor.blackColor()
         let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
@@ -72,8 +73,14 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
         print("ADDED")
         print(items_matchstatus)
         dismissViewControllerAnimated(false, completion: nil)
+        
+        
 
-
+    }
+    
+    @IBAction func reloadlivescore(sender: AnyObject) {
+        reloadfunc()
+        
         
     }
     
@@ -135,10 +142,15 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
                             
                             let trimmed=result!.stringByReplacingOccurrencesOfString("\r\n", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
 //                            print(trimmed.stringByReplacingOccurrencesOfString("\n", withString: ""))
-                            items_score.append(trimmed.stringByReplacingOccurrencesOfString("\n", withString: "").stringByReplacingOccurrencesOfString("                                                    ", withString: ""))
+                            
+                            print("CHECK THIS OUT")
+                            let trimmedString = trimmed.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+
+                            print(trimmedString.stringByReplacingOccurrencesOfString("                                        ", withString: "" ).stringByReplacingOccurrencesOfString("                                        ", withString: "").stringByReplacingOccurrencesOfString("\n", withString:""))
+//                            print(trimmed.replace("\n", withString: "").stringByReplacingOccurrencesOfString("                                                    ", withString: ""))
                             
                             
-                            
+                            items_score.append(trimmedString.stringByReplacingOccurrencesOfString("                                        ", withString: "" ).stringByReplacingOccurrencesOfString("                                        ", withString: "").stringByReplacingOccurrencesOfString("\n", withString:""))
                             
                         }
                         

@@ -14,6 +14,7 @@ import AVFoundation
 class NewsViewController: UIViewController,UINavigationControllerDelegate {
 
     var news: News?
+    let alertController = UIAlertController(title: nil, message: "Loading\n\n", preferredStyle: UIAlertControllerStyle.Alert)
 
     // Mark: Properties
     @IBOutlet weak var titleLabel: UILabel!
@@ -25,19 +26,29 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
         super.viewDidLoad()
 
         print(news!.type)
+    
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            if(self.news!.type == "News")
+            {
+                self.loadNewsText(self.news!.html)
+                self.loadNewsDate(self.news!.html)
+                if(self.news!.title.containsString("(عکس)"))
+                {
+                    self.loadNewsImageAks(self.news!.html)
+                }
+                else{
+                    self.loadNewsImage(self.news!.html)
+                }
+            }
+            else
+            {
+                self.loadNewsVideo(self.news!.html)
+            }
+        })
+
         titleLabel.text=news?.title
-        
-        if(news!.type == "News")
-        {
-        loadNewsText(news!.html)
-        loadNewsDate(news!.html)
-        loadNewsImage(news!.html)
-        }
-        else
-        {
-         loadNewsVideo(news!.html)
-        }
-    }
+}
     
 
     @IBAction func shareButton(sender: AnyObject) {
@@ -77,9 +88,30 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
         
     }
 
+    func loadNewsImageAks(html: String)
+    {
+
+        let url = NSURL(string: html)
+        
+        if let doc_newsinner = HTML(url: url!, encoding: NSUTF8StringEncoding) {
+            print("------")
+            if doc_newsinner.at_xpath("//div[@id='news-col-right']//div[@id='anc']//div[@id='anc-op']//tbody//table[@id='main-body']//tbody//img//@src")?.toHTML != nil
+            {
+                
+                
+                
+                let innernews=(doc_newsinner.at_xpath("//div[@id='news-col-right']//div[@id='anc']//div[@id='anc-op']//tbody//table[@id='main-body']//tbody//img//@src")?.content)
+                print(innernews)
+                load_image(innernews!)
+            }
+        }
+        
+    }
+    
     
     func loadNewsImage(html: String)
     {
+//
         let url = NSURL(string: html)
 
         if let doc_newsinner = HTML(url: url!, encoding: NSUTF8StringEncoding) {
@@ -99,25 +131,41 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
     
     func loadNewsText(html : String) {
         
+        
+        let spinnerIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        
+        spinnerIndicator.center = CGPointMake(135.0, 65.5)
+        spinnerIndicator.color = UIColor.blackColor()
+        spinnerIndicator.startAnimating()
+        
+        alertController.view.addSubview(spinnerIndicator)
+        self.presentViewController(alertController, animated: false, completion: nil)
+        
+
         // MARK: football reading inner news
         let url = NSURL(string: html)
         
         if let doc_newsinner = HTML(url: url!, encoding: NSUTF8StringEncoding) {
-            print("------")
+            print("----,,,--")
             if doc_newsinner.at_xpath("//div[@id='news-col-right']//div[@id='anc']//div[@id='anc-op']//tbody//table[@id='main-body']//p")?.toHTML != nil
             {
    
             let innernews=(doc_newsinner.at_xpath("//div[@id='news-col-right']//div[@id='anc']//div[@id='anc-op']//tbody//table[@id='main-body']//p")?.content)
                 
-                let text2 = innernews!.stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-                let result = text2.stringByReplacingOccurrencesOfString("\r\n", withString: "")
-                print(result)
-
                 
+                let text2 = innernews!.stringByReplacingOccurrencesOfString("\r\n", withString: "\n", options: NSStringCompareOptions.LiteralSearch, range: nil)
+                
+//                print(text2)
+                let result = text2.stringByReplacingOccurrencesOfString("\n\n", withString: "\n")
+
+                print("----nnn--")
+
                 
                 newsText.text=result
 
             }
+            self.alertController.dismissViewControllerAnimated(true, completion: nil)
+
         
     }
     }

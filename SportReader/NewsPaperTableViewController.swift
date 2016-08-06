@@ -16,6 +16,7 @@ class NewsPaperTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
         navigationController!.navigationBar.barTintColor = swiftColor
 
@@ -26,8 +27,11 @@ class NewsPaperTableViewController: UITableViewController {
         
         if Reachability.isConnectedToNetwork() == true {
             print("Internet connection OK")
-            loadNewsPaper()
-            
+
+            dispatch_async(dispatch_get_main_queue(), {
+                self.reloadfunc()
+            })
+
         } else {
             print("Internet connection FAILED")
             var alert=UIAlertController(title: "No Internet Connection", message: "Turn on cellular data or use Wi-Fi to access data.", preferredStyle: UIAlertControllerStyle.Alert);
@@ -56,6 +60,7 @@ class NewsPaperTableViewController: UITableViewController {
 
       
     }
+    
     
     func loadNewsPaper(){
         print("newspaper tableview contrller")
@@ -100,8 +105,8 @@ class NewsPaperTableViewController: UITableViewController {
 
     }
     
-    @IBAction func refreshNewsPaper(sender: AnyObject) {
-        
+    func reloadfunc()
+    {
         newspapers.removeAll()
         
         
@@ -110,7 +115,7 @@ class NewsPaperTableViewController: UITableViewController {
         
         self.tableView.reloadData()
         
-        let alert = UIAlertController(title: nil, message: "Reloading...", preferredStyle: .Alert)
+        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .Alert)
         
         alert.view.tintColor = UIColor.blackColor()
         let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
@@ -126,7 +131,12 @@ class NewsPaperTableViewController: UITableViewController {
         print(newspapers)
         dismissViewControllerAnimated(false, completion: nil)
         
+
+    }
+    
+    @IBAction func refreshNewsPaper(sender: AnyObject) {
         
+      reloadfunc()
 
     }
     
