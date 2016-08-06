@@ -8,6 +8,8 @@
 
 import UIKit
 import Kanna
+import AVKit
+import AVFoundation
 
 class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -126,7 +128,10 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
+        
     }
+
+    
     /*
     // MARK: - Navigation
 

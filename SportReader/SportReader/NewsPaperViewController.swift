@@ -39,7 +39,7 @@ class NewsPaperViewController: UIViewController,UINavigationControllerDelegate {
         // Do any additional setup after loading the view.
     }
     @IBAction func shareButton(sender: AnyObject) {
-        displayShareSheet(newspaper!.html)
+        displayShareSheet("Please Download our app from : \n"+newspaper!.html)
     }
 
     override func didReceiveMemoryWarning() {

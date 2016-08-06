@@ -33,7 +33,7 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
             {
                 self.loadNewsText(self.news!.html)
                 self.loadNewsDate(self.news!.html)
-                if(self.news!.title.containsString("(عکس)"))
+                if(self.news!.title.containsString("عکس"))
                 {
                     self.loadNewsImageAks(self.news!.html)
                 }
@@ -52,7 +52,7 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
     
 
     @IBAction func shareButton(sender: AnyObject) {
-    displayShareSheet(news!.html)
+    displayShareSheet("Please Download our app from : \n"+news!.html)
     }
     
     func displayShareSheet(shareContent:String) {
@@ -94,7 +94,6 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
         let url = NSURL(string: html)
         
         if let doc_newsinner = HTML(url: url!, encoding: NSUTF8StringEncoding) {
-            print("------")
             if doc_newsinner.at_xpath("//div[@id='news-col-right']//div[@id='anc']//div[@id='anc-op']//tbody//table[@id='main-body']//tbody//img//@src")?.toHTML != nil
             {
                 
@@ -125,6 +124,9 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
             print(innernews)
             load_image(innernews!)
         }
+            else{
+                loadNewsImageAks(self.news!.html)
+            }
         }
 
     }
