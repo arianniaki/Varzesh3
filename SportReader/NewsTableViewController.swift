@@ -136,6 +136,26 @@ class NewsTableViewController: UITableViewController {
         // Fetches the appropriate meal for the data source layout.
         let ite = news[indexPath.row]
         
+        if ite.type == "Video"
+        {
+            let photo1 = UIImage(named: "video")!
+            
+
+            cell.newsTypeImage.image = photo1
+            
+             cell.newsTypeImage.image =  cell.newsTypeImage.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
+
+             cell.newsTypeImage.tintColor = swiftColor
+
+        }
+        else
+        {
+            let photo1 = UIImage(named: "news")!
+            
+            cell.newsTypeImage.image = photo1
+            
+        }
         cell.newsTitle.text = ite.title
 //        cell.newsImage.image = ite.photo
         
