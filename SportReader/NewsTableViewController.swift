@@ -40,15 +40,42 @@ class NewsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            
+            let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .Alert)
+            
+            alert.view.tintColor = UIColor.blackColor()
+            let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+            loadingIndicator.startAnimating();
+            
+            alert.view.addSubview(loadingIndicator)
+            self.presentViewController(alert, animated: true, completion: nil)
+
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                self.loadNews()
+
+                
+
+            }
+        }
         let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
         navigationController!.navigationBar.barTintColor = swiftColor
-
+        
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-
+        
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        dispatch_async(dispatch_get_main_queue(), {
-            self.loadNews()
-        })
+
+        
+        
+//        dispatch_async(dispatch_get_main_queue(), {
+//        })
 
         
 
@@ -62,31 +89,16 @@ class NewsTableViewController: UITableViewController {
 
         tableView.reloadData()
         
-        let alert = UIAlertController(title: nil, message: "Reloading...", preferredStyle: .Alert)
-        
-        alert.view.tintColor = UIColor.blackColor()
-        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        loadingIndicator.startAnimating();
-        
-        alert.view.addSubview(loadingIndicator)
-        presentViewController(alert, animated: true, completion: nil)
-        
-
         let url = NSURL(string: "http://varzesh3.com")
 
         if let doc_news = HTML(url: url!, encoding: NSUTF8StringEncoding) {
-            print("------")
+//            print("------")
             let lis_news=(doc_news.at_xpath("//div[@id='widget3']//div[@class='widget-content']//div[@id='footballnewsbox']//ul")?.toHTML)
             //            print(lis_news)
             let Arr_news = lis_news!.componentsSeparatedByString("<li ")
-            print(Arr_news.count)
             for a_news in Arr_news {
-                print(a_news)
-                print("0000")
                 let html_news = a_news
-                if(a_news.containsString("filter=\"4\""))
+                if (a_news.containsString("filter=\"4\"")) || (a_news.containsString("filter=\"8\""))
                 {
                 if let htmlDoc = HTML(html: html_news, encoding: NSUTF8StringEncoding) {
                     if htmlDoc.at_xpath("//p//a/@title")?.toHTML != nil
@@ -96,6 +108,7 @@ class NewsTableViewController: UITableViewController {
                     }
                 }
                 }
+                
                 else
                 {
                     if let htmlDoc = HTML(html: html_news, encoding: NSUTF8StringEncoding) {
@@ -109,7 +122,7 @@ class NewsTableViewController: UITableViewController {
                 }
             }
             tableView.reloadData()
-            dismissViewControllerAnimated(false, completion: nil)
+            self.dismissViewControllerAnimated(false, completion: nil)
 
 
             
@@ -176,7 +189,7 @@ class NewsTableViewController: UITableViewController {
             if let selectedNewsCell = sender as? NewsTableViewCell {
                 let indexPath = tableView.indexPathForCell(selectedNewsCell)!
                 let selectedNews = news[indexPath.row]
-                print(selectedNews.title)
+//                print(selectedNews.title)
                 newsDetailViewController.news = selectedNews
 
 

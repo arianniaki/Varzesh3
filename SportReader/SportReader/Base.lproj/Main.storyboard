@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Varzesh3 News-->
+        <!--اخبار-->
         <scene sceneID="kls-gm-YLy">
             <objects>
                 <tableViewController id="0iV-hY-JYa" customClass="NewsTableViewController" customModule="SportReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,7 +58,7 @@
                             <outlet property="delegate" destination="0iV-hY-JYa" id="mLl-EB-wHf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Varzesh3 News" id="Rqz-to-36e">
+                    <navigationItem key="navigationItem" title="اخبار" id="Rqz-to-36e">
                         <barButtonItem key="rightBarButtonItem" image="refresh" id="Pfe-Tg-VTg">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -161,7 +161,7 @@
             </objects>
             <point key="canvasLocation" x="2431" y="311"/>
         </scene>
-        <!--Newspapers-->
+        <!--روزنامه‌ها-->
         <scene sceneID="aEe-gm-xex">
             <objects>
                 <tableViewController id="sup-rK-AwE" customClass="NewsPaperTableViewController" customModule="SportReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -211,7 +211,7 @@
                             <outlet property="delegate" destination="sup-rK-AwE" id="eaT-EG-Ytc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Newspapers" id="nDS-Zi-gG5">
+                    <navigationItem key="navigationItem" title="روزنامه‌ها" id="nDS-Zi-gG5">
                         <barButtonItem key="rightBarButtonItem" image="refresh" id="Cj8-of-EMV">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -270,7 +270,7 @@
             </objects>
             <point key="canvasLocation" x="2431" y="1153"/>
         </scene>
-        <!--Live Score-->
+        <!--نتایج زنده-->
         <scene sceneID="0po-BB-0m0">
             <objects>
                 <viewController id="BQS-TZ-65c" customClass="LiveScoreViewController" customModule="SportReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -379,7 +379,7 @@
                             <constraint firstItem="qb0-Dp-WcJ" firstAttribute="top" secondItem="7PU-0G-gFX" secondAttribute="topMargin" constant="30" id="x93-pR-Qef"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Live Score" id="28E-MD-g3B">
+                    <navigationItem key="navigationItem" title="نتایج زنده" id="28E-MD-g3B">
                         <barButtonItem key="rightBarButtonItem" image="refresh" id="Mvb-xm-8AE">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -406,21 +406,21 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="R0R-Eg-7EZ" kind="relationship" relationship="viewControllers" id="tOt-Gr-xWp"/>
-                        <segue destination="30X-2P-SuH" kind="relationship" relationship="viewControllers" id="pQ5-Rz-cTL"/>
                         <segue destination="85a-mW-UnA" kind="relationship" relationship="viewControllers" id="Xxo-V5-j5M"/>
+                        <segue destination="R0R-Eg-7EZ" kind="relationship" relationship="viewControllers" id="tOt-Gr-xWp"/>
                         <segue destination="Y2u-Jx-6o2" kind="relationship" relationship="viewControllers" id="TzO-t9-xP9"/>
+                        <segue destination="30X-2P-SuH" kind="relationship" relationship="viewControllers" id="pQ5-Rz-cTL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PvL-nN-7Wz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1905" y="229"/>
         </scene>
-        <!--Newspapers-->
+        <!--روزنامه‌ها-->
         <scene sceneID="K4R-UH-hoD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="85a-mW-UnA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Newspapers" image="newspaper" id="hfz-ax-lzc"/>
+                    <tabBarItem key="tabBarItem" title="روزنامه‌ها" image="newspaper" id="hfz-ax-lzc"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="rWP-uV-Fo8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nfy-zb-wqO">
@@ -436,7 +436,7 @@
             </objects>
             <point key="canvasLocation" x="349" y="1153"/>
         </scene>
-        <!--Schedule-->
+        <!--پخش ورزش-->
         <scene sceneID="1fd-fk-8K0">
             <objects>
                 <viewController id="Ddi-ny-amS" customClass="ScheduleViewController" customModule="SportReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -493,7 +493,7 @@
                             <constraint firstItem="xuQ-4j-TZT" firstAttribute="top" secondItem="LWa-vz-inE" secondAttribute="bottom" constant="-34" id="lC5-wY-MU8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Schedule" id="ROY-ml-Wkp">
+                    <navigationItem key="navigationItem" title="پخش ورزش" id="ROY-ml-Wkp">
                         <barButtonItem key="rightBarButtonItem" image="refresh" id="ghz-eM-bEe">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -509,11 +509,11 @@
             </objects>
             <point key="canvasLocation" x="1553" y="2024"/>
         </scene>
-        <!--News-->
+        <!--اخبار-->
         <scene sceneID="KIf-V9-ryx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R0R-Eg-7EZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="News" image="chrome reader" id="2W9-ts-voe"/>
+                    <tabBarItem key="tabBarItem" title="اخبار" image="chrome reader" id="2W9-ts-voe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LA6-52-GAR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -528,11 +528,11 @@
             </objects>
             <point key="canvasLocation" x="355" y="311"/>
         </scene>
-        <!--Schedule-->
+        <!--پخش ورزش-->
         <scene sceneID="dsj-z2-IEK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="30X-2P-SuH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Schedule" image="Schedule" id="flA-np-d8E"/>
+                    <tabBarItem key="tabBarItem" title="پخش ورزش" image="Schedule" id="flA-np-d8E"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1yx-RA-VL7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -547,11 +547,11 @@
             </objects>
             <point key="canvasLocation" x="329" y="2024"/>
         </scene>
-        <!--Live Score-->
+        <!--نتایج زنده-->
         <scene sceneID="C1k-b2-4Zu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y2u-Jx-6o2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Live Score" image="livescore" id="MJZ-dz-5aq"/>
+                    <tabBarItem key="tabBarItem" title="نتایج زنده" image="livescore" id="MJZ-dz-5aq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QPn-jJ-i17">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

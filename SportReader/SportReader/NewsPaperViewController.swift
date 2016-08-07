@@ -36,6 +36,8 @@ class NewsPaperViewController: UIViewController,UINavigationControllerDelegate {
 
         loadNewsPaperImage(newspaper!.html)
 
+
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func shareButton(sender: AnyObject) {

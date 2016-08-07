@@ -25,10 +25,36 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dispatch_async(dispatch_get_main_queue(), {
-            self.reloadfunc()
-        })
+      
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            
+            let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .Alert)
+            
+            alert.view.tintColor = UIColor.blackColor()
+            let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+            loadingIndicator.startAnimating();
+            
+            alert.view.addSubview(loadingIndicator)
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                self.reloadfunc()                
+                
+                
+            }
+        }
         
+        
+//        dispatch_async(dispatch_get_main_queue(), {
+//            self.reloadfunc()
+//        })
+//        
         let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
         navigationController!.navigationBar.barTintColor = swiftColor
 
@@ -56,23 +82,11 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
         print("REMOVED")
         print(items_matchstatus)
         self.livescoreCollectionView.reloadData()
-        
-        
-        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .Alert)
-        
-        alert.view.tintColor = UIColor.blackColor()
-        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        loadingIndicator.startAnimating();
-        
-        alert.view.addSubview(loadingIndicator)
-        presentViewController(alert, animated: true, completion: nil)
         loadlivescore()
         self.livescoreCollectionView.reloadData()
         print("ADDED")
         print(items_matchstatus)
-        dismissViewControllerAnimated(false, completion: nil)
+       self.dismissViewControllerAnimated(false, completion: nil)
         
         
 
@@ -98,17 +112,18 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
                 print("+__________________+")
                 let matches = item.componentsSeparatedByString("<div class=\"match-row")
                 
-//                let oddmatches = item.componentsSeparatedByString("<div class=\"match-row  odd-color")
 
                 
                 print(matches.count)
                 
-//                print("ODD MATHCES")
-//                print(oddmatches.count)
                 for match in matches
                 {
                     
-//                    print(match)
+                    print("MATCH START")
+                    print(match)
+                    print("MATCH END")
+                    if(!match.containsString("score-5div")) //deleting volleyball
+                    {
                     let html_news = match
                     if let htmlDoc = HTML(html: html_news, encoding: NSUTF8StringEncoding) {
 //                        print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname right']")?.toHTML)
@@ -139,19 +154,20 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
 //                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content)
                             let result = htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content!
                             
+                            print("-->")
+                            let trimmed=result!.stringByReplacingOccurrencesOfString("\r\n                                        ", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
+
                             
-                            let trimmed=result!.stringByReplacingOccurrencesOfString("\r\n", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
-//                            print(trimmed.stringByReplacingOccurrencesOfString("\n", withString: ""))
+                            print(trimmed.stringByReplacingOccurrencesOfString("\n", withString: ""))
+                            
                             
                             print("CHECK THIS OUT")
-                            let trimmedString = trimmed.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 
-                            print(trimmedString.stringByReplacingOccurrencesOfString("                                        ", withString: "" ).stringByReplacingOccurrencesOfString("                                        ", withString: "").stringByReplacingOccurrencesOfString("\n", withString:""))
-//                            print(trimmed.replace("\n", withString: "").stringByReplacingOccurrencesOfString("                                                    ", withString: ""))
+//                            print(trimmedString.stringByReplacingOccurrencesOfString("                                        ", withString: "" ).stringByReplacingOccurrencesOfString("                                        ", withString: "").stringByReplacingOccurrencesOfString("\n", withString:""))
+
+                            //                            print(trimmed.replace("\n", withString: "").stringByReplacingOccurrencesOfString("                                                    ", withString: ""))
                             
-                            
-                            items_score.append(trimmedString.stringByReplacingOccurrencesOfString("                                        ", withString: "" ).stringByReplacingOccurrencesOfString("                                        ", withString: "").stringByReplacingOccurrencesOfString("\n", withString:""))
-                            
+                             items_score.append(trimmed.stringByReplacingOccurrencesOfString("\n", withString: ""))
                         }
                         
                         if(htmlDoc.at_xpath("//div[@class='match-status']//span")?.content != nil){
@@ -188,6 +204,7 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
                             
                             let trimmed=result!.stringByReplacingOccurrencesOfString("\n", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
                             
+                            
                             items_gametime.append(trimmed)
                             
                             
@@ -203,6 +220,7 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
                 
             }
         }
+    }
     }
     
     
@@ -225,6 +243,18 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
         cell.MatchStatus.text = self.items_matchstatus[indexPath.item]
         cell.gameDate.text = self.items_gamedate[indexPath.item]
         cell.GameTime.text = self.items_gametime[indexPath.item]
+        print("GMAE TIME ---->")
+        print(cell.MatchStatus.text)
+        if(cell.MatchStatus.text!.containsString("نهایی"))
+        {
+            cell.MatchStatus.textColor = UIColor.redColor()
+        }
+        else
+        {
+            let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
+            cell.MatchStatus.textColor = swiftColor
+
+        }
 
 
         

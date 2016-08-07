@@ -23,9 +23,35 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dispatch_async(dispatch_get_main_queue(), {
-            self.reloadfunc()
-        })
+        
+//        dispatch_async(dispatch_get_main_queue(), {
+//            self.reloadfunc()
+//        })
+        
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            
+            let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .Alert)
+            
+            alert.view.tintColor = UIColor.blackColor()
+            let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+            loadingIndicator.startAnimating();
+            
+            alert.view.addSubview(loadingIndicator)
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                self.reloadfunc()
+                
+                
+            }
+        }
+
 
         
         let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
@@ -37,7 +63,6 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
 
         print("-----")
         print(items)
-
         // Do any additional setup after loading the view.
     }
 
@@ -47,22 +72,12 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
         print("REMOVED")
         print(items)
         self.scheduleCollectionView.reloadData()
-        
-        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .Alert)
-        
-        alert.view.tintColor = UIColor.blackColor()
-        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        loadingIndicator.startAnimating();
-        
-        alert.view.addSubview(loadingIndicator)
-        presentViewController(alert, animated: true, completion: nil)
+
         loadschedule()
         self.scheduleCollectionView.reloadData()
         print("ADDED")
         print(items)
-        dismissViewControllerAnimated(false, completion: nil)
+        self.dismissViewControllerAnimated(false, completion: nil)
         
 
     }
