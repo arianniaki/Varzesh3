@@ -22,7 +22,7 @@ class NewsTableViewController: UITableViewController {
     @IBOutlet weak var act: UIActivityIndicatorView!
     @IBAction func Reload(sender: AnyObject) {
         
-        let alert = UIAlertController(title: nil, message: "Reloading...", preferredStyle: .Alert)
+        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .Alert)
         
         alert.view.tintColor = UIColor.blackColor()
         let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
@@ -33,7 +33,6 @@ class NewsTableViewController: UITableViewController {
         alert.view.addSubview(loadingIndicator)
         presentViewController(alert, animated: true, completion: nil)
         loadNews()
-        dismissViewControllerAnimated(false, completion: nil)
 
     }
     

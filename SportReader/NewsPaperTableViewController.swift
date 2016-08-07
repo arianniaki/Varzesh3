@@ -133,21 +133,36 @@ class NewsPaperTableViewController: UITableViewController {
     func reloadfunc()
     {
         newspapers.removeAll()
+        
+        
+        
         print("REMOVED")
+        
         self.tableView.reloadData()
         
+    
         loadNewsPaper()
         self.tableView.reloadData()
         print("ADDED")
         print(newspapers)
-        self.dismissViewControllerAnimated(false, completion: nil)
+        dismissViewControllerAnimated(false, completion: nil)
         
 
     }
     
     @IBAction func refreshNewsPaper(sender: AnyObject) {
+        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .Alert)
         
+        alert.view.tintColor = UIColor.blackColor()
+        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        presentViewController(alert, animated: true, completion: nil)
       reloadfunc()
+        
 
     }
     
