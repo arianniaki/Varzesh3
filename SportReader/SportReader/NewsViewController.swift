@@ -27,6 +27,16 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
         titleLabel.numberOfLines = 0
         print(news!.type)
     
+        let spinnerIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        
+        spinnerIndicator.center = CGPointMake(135.0, 65.5)
+        spinnerIndicator.color = UIColor.blackColor()
+        spinnerIndicator.startAnimating()
+        
+        alertController.view.addSubview(spinnerIndicator)
+        self.presentViewController(alertController, animated: false, completion: nil)
+
+        
         dispatch_async(dispatch_get_main_queue(), {
             
             if(self.news!.type == "News")
@@ -48,6 +58,8 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
         })
 
         titleLabel.text=news?.title
+        self.alertController.dismissViewControllerAnimated(true, completion: nil)
+       
 }
     
 
@@ -59,7 +71,7 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
         let activityViewController = UIActivityViewController(activityItems: [shareContent as NSString], applicationActivities: nil)
         presentViewController(activityViewController, animated: true, completion: {})
     }
-    
+
     
     func loadNewsVideo(html: String)
     {
@@ -69,8 +81,6 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
             print("------")
             if doc_newsinner.at_xpath("//div[@class='container main']//div[@class='row']//div[@class='col-xs-12 col-md-8 col-lg-9 pull-right']//div[@class='video-player']")?.toHTML != nil
             {
-                
-                
                 
                 let innernews=(doc_newsinner.at_xpath("//div[@class='container main']//div[@class='row']//div[@class='col-xs-12 col-md-8 col-lg-9 pull-right']//div[@class='video-player']//video//@src")?.content)
                 print(innernews)
@@ -90,22 +100,59 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
 
     func loadNewsImageAks(html: String)
     {
+        
+        var imagesListArrayString = [String]()
 
         let url = NSURL(string: html)
         
         if let doc_newsinner = HTML(url: url!, encoding: NSUTF8StringEncoding) {
-            if doc_newsinner.at_xpath("//div[@id='news-col-right']//div[@id='anc']//div[@id='anc-op']//tbody//table[@id='main-body']//tbody//img//@src")?.toHTML != nil
-            {
-                
-                
-                
-                let innernews=(doc_newsinner.at_xpath("//div[@id='news-col-right']//div[@id='anc']//div[@id='anc-op']//tbody//table[@id='main-body']//tbody//img//@src")?.content)
-                print(innernews)
-                load_image(innernews!)
+                        print("------")
+                        let innernews=(doc_newsinner.at_xpath("//div[@id='news-col-right']//div[@id='anc']//div[@id='anc-op']//tbody//table[@id='main-body']")?.toHTML)
+            
+                        let allmatches = innernews!.componentsSeparatedByString("<p")
+                        //                            print(allmatches.count)
+                        for item in allmatches
+                        {
+            
+                            let html_news = item
+                            if let htmlDoc = HTML(html: html_news, encoding: NSUTF8StringEncoding) {
+                                print("___>")
+                                if htmlDoc.at_xpath("//img//@src")?.toHTML != nil {
+                                    print(htmlDoc.at_xpath("//img//@src")?.toHTML)
+                                    imagesListArrayString.append(htmlDoc.at_xpath("//img//@src")!.content!)
+                                }
+                                
+                            }
+                            
+                        }
+                    }
+        var imagesListArray = [UIImage]()
+        
+        for imageName in imagesListArrayString
+        {
+            print("************")
+            print(imageName)
+            print("&&&&&&&&&&&&")
+            
+            if let url = NSURL(string: imageName) {
+                if let data = NSData(contentsOfURL: url) {
+                    let image = UIImage(data: data)
+                    if(!imageName.containsString("telegram"))
+                    {imagesListArray.append(image!)}
+
+                }        
             }
         }
         
+        print(imagesListArray)
+        print(imagesListArray.count)
+        
+        self.newsImage.animationImages = imagesListArray
+        self.newsImage.animationDuration = 10.0
+        self.newsImage.startAnimating()
+
     }
+
     
     
     func loadNewsImage(html: String)
@@ -133,17 +180,6 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
     
     func loadNewsText(html : String) {
         
-        
-        let spinnerIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-        
-        spinnerIndicator.center = CGPointMake(135.0, 65.5)
-        spinnerIndicator.color = UIColor.blackColor()
-        spinnerIndicator.startAnimating()
-        
-        alertController.view.addSubview(spinnerIndicator)
-        self.presentViewController(alertController, animated: false, completion: nil)
-        
-
         // MARK: football reading inner news
         let url = NSURL(string: html)
         
@@ -166,8 +202,6 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
                 newsText.text=result
 
             }
-            self.alertController.dismissViewControllerAnimated(true, completion: nil)
-
         
     }
     }

@@ -92,8 +92,8 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-wE-nSP">
-                                        <rect key="frame" x="236" y="37" width="316" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-wE-nSP">
+                                        <rect key="frame" x="236" y="47" width="316" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="de3-z4-Qxt"/>
                                             <constraint firstAttribute="width" constant="316" id="rx5-3R-tWJ"/>
@@ -103,7 +103,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I70-R8-CB6">
-                                        <rect key="frame" x="45" y="80" width="470" height="230"/>
+                                        <rect key="frame" x="45" y="90" width="470" height="230"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="230" id="GNg-Wl-uIp"/>
                                         </constraints>
@@ -117,12 +117,12 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="I70-R8-CB6" firstAttribute="top" secondItem="u2r-wE-nSP" secondAttribute="bottom" constant="13" id="NQt-Tm-2V0"/>
-                                    <constraint firstItem="u2r-wE-nSP" firstAttribute="top" secondItem="1pT-9M-9Lp" secondAttribute="top" constant="37" id="PIk-sV-UeI"/>
+                                    <constraint firstItem="u2r-wE-nSP" firstAttribute="top" secondItem="1pT-9M-9Lp" secondAttribute="top" constant="47" id="PIk-sV-UeI"/>
                                     <constraint firstAttribute="trailing" secondItem="x4P-Ns-TpB" secondAttribute="trailing" constant="8" id="Qfc-0i-s5o"/>
                                     <constraint firstItem="u2r-wE-nSP" firstAttribute="trailing" secondItem="1pT-9M-9Lp" secondAttribute="trailingMargin" id="Yrv-T9-age"/>
-                                    <constraint firstAttribute="bottom" secondItem="k1a-y3-xu6" secondAttribute="bottom" constant="177" id="ZOA-a1-dUo"/>
+                                    <constraint firstAttribute="bottom" secondItem="k1a-y3-xu6" secondAttribute="bottom" constant="230" id="ZOA-a1-dUo"/>
                                     <constraint firstItem="x4P-Ns-TpB" firstAttribute="top" secondItem="1pT-9M-9Lp" secondAttribute="top" id="a6g-x4-cU0"/>
-                                    <constraint firstItem="k1a-y3-xu6" firstAttribute="top" secondItem="I70-R8-CB6" secondAttribute="bottom" constant="8" symbolic="YES" id="dGJ-vo-8jR"/>
+                                    <constraint firstItem="k1a-y3-xu6" firstAttribute="top" secondItem="I70-R8-CB6" secondAttribute="bottom" constant="-2" id="dGJ-vo-8jR"/>
                                     <constraint firstItem="I70-R8-CB6" firstAttribute="centerX" secondItem="k1a-y3-xu6" secondAttribute="centerX" id="hWs-of-q7R"/>
                                     <constraint firstItem="x4P-Ns-TpB" firstAttribute="leading" secondItem="1pT-9M-9Lp" secondAttribute="leading" id="hcq-WU-cvp"/>
                                     <constraint firstItem="I70-R8-CB6" firstAttribute="leading" secondItem="1pT-9M-9Lp" secondAttribute="leading" constant="45" id="m5A-k9-YW5"/>
