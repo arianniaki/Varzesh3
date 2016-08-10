@@ -24,7 +24,7 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
     @IBOutlet weak var scrollNews: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        titleLabel.numberOfLines = 0
         print(news!.type)
     
         dispatch_async(dispatch_get_main_queue(), {

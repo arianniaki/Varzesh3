@@ -97,7 +97,7 @@ class NewsTableViewController: UITableViewController {
             let Arr_news = lis_news!.componentsSeparatedByString("<li ")
             for a_news in Arr_news {
                 let html_news = a_news
-                if (a_news.containsString("filter=\"4\"")) || (a_news.containsString("filter=\"8\""))
+                if (a_news.containsString("news-video"))
                 {
                 if let htmlDoc = HTML(html: html_news, encoding: NSUTF8StringEncoding) {
                     if htmlDoc.at_xpath("//p//a/@title")?.toHTML != nil
