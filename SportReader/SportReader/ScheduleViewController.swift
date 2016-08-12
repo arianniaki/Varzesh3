@@ -54,7 +54,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
 
 
         
-        let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
+        let swiftColor = UIColor(red: 27/255, green: 138/255, blue: 53/255, alpha: 1)
         navigationController!.navigationBar.barTintColor = swiftColor
 
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -103,19 +103,19 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
             let lis=(doc2.at_xpath("//div[@id='tv-schedule']//div[@class='widget-content']//center")!.toHTML)
             //            print (lis)
             
-            print("____W_W_W_W")
+            //print("____W_W_W_W")
             let Arr = lis!.componentsSeparatedByString("<p>")
-            print(Arr.count)
+//            print(Arr.count)
             for a in Arr {
                 let html = a
                 if let htmlDoc = HTML(html: html, encoding: NSUTF8StringEncoding) {
                     
                     if(htmlDoc.at_xpath("//a")?.content != nil){
-                        print(htmlDoc.at_xpath("//a")!.content)
-                        print("DONE")
+//                        print(htmlDoc.at_xpath("//a")!.content)
+//                        print("DONE")
                          let result = htmlDoc.at_xpath("//a")!.content!.stringByReplacingOccurrencesOfString("\r\n", withString: "")
-                        print(result)
-                        print("_________")
+//                        print(result)
+//                        print("_________")
                         
                         
                         items.append(result)
@@ -144,6 +144,15 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         cell.ScheduleLabel.text = self.items[indexPath.item]
 
+        if (cell.ScheduleLabel.text!.containsString("شبکه سه"))
+        {
+            cell.ScheduleImage.image = UIImage(named: "shabake_3")
+        }
+        else
+        {
+            cell.ScheduleImage.image =  UIImage(named: "shabake_varzesh")
+        }
+            
         cell.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249.0/255, alpha: 1.0) // make cell more visible in our example project
         return cell
     }

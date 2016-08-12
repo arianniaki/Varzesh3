@@ -34,7 +34,8 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
         spinnerIndicator.startAnimating()
         
         alertController.view.addSubview(spinnerIndicator)
-        self.presentViewController(alertController, animated: false, completion: nil)
+        // navigation controller to avoid this warning Warning :-Presenting view controllers on detached view controllers is discouraged
+        self.navigationController!.presentViewController(alertController, animated: false, completion: nil)
 
         
         dispatch_async(dispatch_get_main_queue(), {
@@ -51,12 +52,13 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
                     self.loadNewsImage(self.news!.html)
                 }
             }
-            else
-            {
-                self.loadNewsVideo(self.news!.html)
-            }
+
         })
 
+        if(self.news!.type == "Video")
+        {
+            self.loadNewsVideo(self.news!.html)
+        }
         titleLabel.text=news?.title
         self.alertController.dismissViewControllerAnimated(true, completion: nil)
        
@@ -197,9 +199,14 @@ class NewsViewController: UIViewController,UINavigationControllerDelegate {
                 let result = text2.stringByReplacingOccurrencesOfString("\n\n", withString: "\n")
 
                 print("----nnn--")
-
                 
-                newsText.text=result
+                
+                
+//                print("126")
+//                print(result[result.startIndex.advancedBy(126)..<result.endIndex])
+                
+                // for trimming the begining of the news text
+                newsText.text = result[result.startIndex.advancedBy(126)..<result.endIndex]
 
             }
         

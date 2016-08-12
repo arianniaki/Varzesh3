@@ -11,4 +11,5 @@ import UIKit
 class ScheduleCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var ScheduleLabel: UILabel!
+    @IBOutlet weak var ScheduleImage: UIImageView!
 }

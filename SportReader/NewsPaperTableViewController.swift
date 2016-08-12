@@ -17,7 +17,7 @@ class NewsPaperTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
+        let swiftColor = UIColor(red: 27/255, green: 138/255, blue: 53/255, alpha: 1)
         navigationController!.navigationBar.barTintColor = swiftColor
 
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()

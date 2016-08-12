@@ -55,7 +55,7 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
 //            self.reloadfunc()
 //        })
 //        
-        let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
+        let swiftColor = UIColor(red: 27/255, green: 138/255, blue: 53/255, alpha: 1)
         navigationController!.navigationBar.barTintColor = swiftColor
 
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -63,11 +63,11 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 
         
-        print("-----11")
-        print(items_team1)
-        print(items_team2)
+//        print("-----11")
+//        print(items_team1)
+//        print(items_team2)
 //        print(items_score)
-        print("-----22")
+//        print("-----22")
         print(items_gamedate)
 
         // Do any additional setup after loading the view.
@@ -79,13 +79,13 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
         items_team1.removeAll()
         items_team2.removeAll()
         items_matchstatus.removeAll()
-        print("REMOVED")
-        print(items_matchstatus)
+//        print("REMOVED")
+//        print(items_matchstatus)
         self.livescoreCollectionView.reloadData()
         loadlivescore()
         self.livescoreCollectionView.reloadData()
-        print("ADDED")
-        print(items_matchstatus)
+//        print("ADDED")
+//        print(items_matchstatus)
        self.dismissViewControllerAnimated(false, completion: nil)
         
         
@@ -129,9 +129,7 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
                 for match in matches
                 {
                     
-                    print("MATCH START")
-                    print(match)
-                    print("MATCH END")
+                    
                     if(!match.containsString("score-5div")) //deleting volleyball
                     {
                     let html_news = match
@@ -164,15 +162,14 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
 //                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content)
                             let result = htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content!
                             
-                            print("-->")
+                            
                             let trimmed=result!.stringByReplacingOccurrencesOfString("\r\n                                        ", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
 
                             
-                            print(trimmed.stringByReplacingOccurrencesOfString("\n", withString: ""))
+//                            print(trimmed.stringByReplacingOccurrencesOfString("\n", withString: ""))
                             
                             
-                            print("CHECK THIS OUT")
-
+                            
 //                            print(trimmedString.stringByReplacingOccurrencesOfString("                                        ", withString: "" ).stringByReplacingOccurrencesOfString("                                        ", withString: "").stringByReplacingOccurrencesOfString("\n", withString:""))
 
                             //                            print(trimmed.replace("\n", withString: "").stringByReplacingOccurrencesOfString("                                                    ", withString: ""))
@@ -209,7 +206,7 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
 
                         if(htmlDoc.at_xpath("//div[@class='start-time']")?.content != nil){
                             
-                            print(htmlDoc.at_xpath("//div[@class='start-time']")?.content)
+//                            print(htmlDoc.at_xpath("//div[@class='start-time']")?.content)
                             let result = htmlDoc.at_xpath("//div[@class='start-time']")?.content!
                             
                             let trimmed=result!.stringByReplacingOccurrencesOfString("\n", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
@@ -261,7 +258,7 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
         }
         else
         {
-            let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
+            let swiftColor = UIColor(red: 27/255, green: 138/255, blue: 53/255, alpha: 1)
             cell.MatchStatus.textColor = swiftColor
 
         }

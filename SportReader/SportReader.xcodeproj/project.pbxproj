@@ -13,6 +13,7 @@
 		D20AE4621D4FA31B002E8298 /* LiveScoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20AE4611D4FA31B002E8298 /* LiveScoreCollectionViewCell.swift */; };
 		D20AE4641D4FA37C002E8298 /* LiveScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20AE4631D4FA37C002E8298 /* LiveScoreViewController.swift */; };
 		D219C4AE1D4CEB44006A0B26 /* Varzesh3Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D219C4AD1D4CEB44006A0B26 /* Varzesh3Launch.storyboard */; };
+		D21C4FBD1D5DE22E00927414 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C4FBC1D5DE22E00927414 /* TabBarViewController.swift */; };
 		D25B62701D50E51A00ED3619 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B626F1D50E51A00ED3619 /* Reachability.swift */; };
 		D2AC97F91D4D1B25000C3D85 /* NewsPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC97F81D4D1B25000C3D85 /* NewsPaperViewController.swift */; };
 		D2AC97FB1D4D1E8C000C3D85 /* NewsPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC97FA1D4D1E8C000C3D85 /* NewsPaper.swift */; };
@@ -36,6 +37,7 @@
 		D20AE4611D4FA31B002E8298 /* LiveScoreCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveScoreCollectionViewCell.swift; sourceTree = "<group>"; };
 		D20AE4631D4FA37C002E8298 /* LiveScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveScoreViewController.swift; sourceTree = "<group>"; };
 		D219C4AD1D4CEB44006A0B26 /* Varzesh3Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Varzesh3Launch.storyboard; sourceTree = "<group>"; };
+		D21C4FBC1D5DE22E00927414 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D25B626F1D50E51A00ED3619 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		D2AC97F81D4D1B25000C3D85 /* NewsPaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPaperViewController.swift; sourceTree = "<group>"; };
 		D2AC97FA1D4D1E8C000C3D85 /* NewsPaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPaper.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				D2AC98001D4DB6EA000C3D85 /* NewsPaperTableViewController.swift */,
 				D2D57E041D4BA9E70006B4E9 /* AppDelegate.swift */,
 				D2D57E081D4BA9E70006B4E9 /* Main.storyboard */,
+				D21C4FBC1D5DE22E00927414 /* TabBarViewController.swift */,
 				D20AE4631D4FA37C002E8298 /* LiveScoreViewController.swift */,
 				D20AE4611D4FA31B002E8298 /* LiveScoreCollectionViewCell.swift */,
 				D20AE45F1D4E0970002E8298 /* ScheduleViewController.swift */,
@@ -264,6 +267,7 @@
 				D20AE4621D4FA31B002E8298 /* LiveScoreCollectionViewCell.swift in Sources */,
 				D2D57E051D4BA9E70006B4E9 /* AppDelegate.swift in Sources */,
 				D20AE4641D4FA37C002E8298 /* LiveScoreViewController.swift in Sources */,
+				D21C4FBD1D5DE22E00927414 /* TabBarViewController.swift in Sources */,
 				D2AC98011D4DB6EA000C3D85 /* NewsPaperTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

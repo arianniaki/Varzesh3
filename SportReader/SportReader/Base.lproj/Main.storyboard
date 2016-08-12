@@ -87,7 +87,7 @@
                                 <rect key="frame" x="20" y="32" width="560" height="548"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="1000" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1a-y3-xu6">
-                                        <rect key="frame" x="8" y="318" width="544" height="0.0"/>
+                                        <rect key="frame" x="8" y="328" width="544" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -122,7 +122,7 @@
                                     <constraint firstItem="u2r-wE-nSP" firstAttribute="trailing" secondItem="1pT-9M-9Lp" secondAttribute="trailingMargin" id="Yrv-T9-age"/>
                                     <constraint firstAttribute="bottom" secondItem="k1a-y3-xu6" secondAttribute="bottom" constant="230" id="ZOA-a1-dUo"/>
                                     <constraint firstItem="x4P-Ns-TpB" firstAttribute="top" secondItem="1pT-9M-9Lp" secondAttribute="top" id="a6g-x4-cU0"/>
-                                    <constraint firstItem="k1a-y3-xu6" firstAttribute="top" secondItem="I70-R8-CB6" secondAttribute="bottom" constant="-2" id="dGJ-vo-8jR"/>
+                                    <constraint firstItem="k1a-y3-xu6" firstAttribute="top" secondItem="I70-R8-CB6" secondAttribute="bottom" constant="8" id="dGJ-vo-8jR"/>
                                     <constraint firstItem="I70-R8-CB6" firstAttribute="centerX" secondItem="k1a-y3-xu6" secondAttribute="centerX" id="hWs-of-q7R"/>
                                     <constraint firstItem="x4P-Ns-TpB" firstAttribute="leading" secondItem="1pT-9M-9Lp" secondAttribute="leading" id="hcq-WU-cvp"/>
                                     <constraint firstItem="I70-R8-CB6" firstAttribute="leading" secondItem="1pT-9M-9Lp" secondAttribute="leading" constant="45" id="m5A-k9-YW5"/>
@@ -396,10 +396,10 @@
             </objects>
             <point key="canvasLocation" x="1553" y="3064"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="ned-gB-TeE">
             <objects>
-                <tabBarController id="sox-Bl-1Ky" sceneMemberID="viewController">
+                <tabBarController id="sox-Bl-1Ky" customClass="TabBarViewController" customModule="SportReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="18d-J3-3fF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -466,15 +466,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAa-OR-qvH">
-                                                    <rect key="frame" x="70" y="19" width="309" height="134"/>
+                                                    <rect key="frame" x="59" y="19" width="255" height="134"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q9u-Sf-SZv">
+                                                    <rect key="frame" x="312" y="50" width="78" height="72"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="Q9u-Sf-SZv" firstAttribute="top" secondItem="UC1-S5-REm" secondAttribute="topMargin" constant="42" id="Dul-ZP-Rvx"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Q9u-Sf-SZv" secondAttribute="trailing" constant="50" id="LIb-4j-Vrf"/>
+                                            <constraint firstItem="Q9u-Sf-SZv" firstAttribute="leading" secondItem="UC1-S5-REm" secondAttribute="leadingMargin" constant="304" id="TaT-0E-2RB"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Q9u-Sf-SZv" secondAttribute="bottom" constant="42" id="W2f-Eh-7gq"/>
+                                        </constraints>
                                         <connections>
+                                            <outlet property="ScheduleImage" destination="Q9u-Sf-SZv" id="ASx-mU-ydx"/>
                                             <outlet property="ScheduleLabel" destination="tAa-OR-qvH" id="6do-M5-plw"/>
                                         </connections>
                                     </collectionViewCell>

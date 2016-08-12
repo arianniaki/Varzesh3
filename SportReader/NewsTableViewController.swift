@@ -13,6 +13,7 @@ class NewsTableViewController: UITableViewController {
     // MARK: Properties
     
     var news = [News]()
+    let swiftColor = UIColor(red: 27/255, green: 138/255, blue: 53/255, alpha: 1)
 
     
     var messageFrame = UIView()
@@ -64,7 +65,6 @@ class NewsTableViewController: UITableViewController {
 
             }
         }
-        let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
         navigationController!.navigationBar.barTintColor = swiftColor
         
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -156,7 +156,6 @@ class NewsTableViewController: UITableViewController {
             cell.newsTypeImage.image = photo1
             
              cell.newsTypeImage.image =  cell.newsTypeImage.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-            let swiftColor = UIColor(red: 72/255, green: 150/255, blue: 78/255, alpha: 1)
 
              cell.newsTypeImage.tintColor = swiftColor
 
