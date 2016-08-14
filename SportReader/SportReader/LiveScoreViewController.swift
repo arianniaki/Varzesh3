@@ -10,18 +10,26 @@ import UIKit
 import Kanna
 
 class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UICollectionViewDelegate{
+    var livescores = [Livescore]()
+
     @IBOutlet weak var refreshScore: UIBarButtonItem!
 
     @IBOutlet weak var livescoreCollectionView: UICollectionView!
     let reuseIdentifier = "LiveCell" // also enter this string as the cell identifier in the storyboard
-    var items_team1 = [String]()
-    var items_team2 = [String]()
-    var items_score = [String]()
-    var items_matchstatus = [String]()
-    var items_gamedate = [String]()
-    var items_gametime = [String]()
+    //var items_team1 = [String]()
+    //var items_team2 = [String]()
+    //var items_score = [String]()
+    //var items_matchstatus = [String]()
+    //var items_gamedate = [String]()
+    //var items_gametime = [String]()
 
-
+    var team1: String = ""
+    var team2: String = ""
+    var score: String = ""
+    var matchstatus: String = ""
+    var gametime: String = ""
+    var gamedate: String = ""
+    var stage : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,24 +76,23 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
 //        print(items_team2)
 //        print(items_score)
 //        print("-----22")
-        print(items_gamedate)
+//        print(items_gamedate)
 
         // Do any additional setup after loading the view.
     }
 
     func reloadfunc()
     {
-        items_score.removeAll()
-        items_team1.removeAll()
-        items_team2.removeAll()
-        items_matchstatus.removeAll()
-//        print("REMOVED")
-//        print(items_matchstatus)
+        livescores.removeAll()
+//        items_score.removeAll()
+//        items_team1.removeAll()
+//        items_team2.removeAll()
+//        items_matchstatus.removeAll()
+        print("REMOVED")
+        
         self.livescoreCollectionView.reloadData()
         loadlivescore()
         self.livescoreCollectionView.reloadData()
-//        print("ADDED")
-//        print(items_matchstatus)
        self.dismissViewControllerAnimated(false, completion: nil)
         
         
@@ -109,6 +116,8 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
     }
     
     func loadlivescore(){
+       
+        
         // MARK: reading tv chedule
         let url = NSURL(string: "http://www.varzesh3.com/livescore")
         if let doc_livescore = HTML(url: url!, encoding: NSUTF8StringEncoding) {
@@ -119,121 +128,110 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
             let allmatches = livescorelink!.componentsSeparatedByString("<div class=\"stage-wrapper sport0\"")
             for item in allmatches
             {
+                stage = ""
                 print("+__________________+")
-                let matches = item.componentsSeparatedByString("<div class=\"match-row")
+                
+                
+                let find: Character = ">"
+                if let index = item.characters.indexOf(find) {
+                    let pos = item.startIndex.distanceTo(index)
+                    print("Found \(find) at position \(pos)")
+                    let wholestage = (item[item.startIndex..<item.startIndex.advancedBy(pos)])
+                    let findstage: Character = "-"
+                    if let index = wholestage.characters.indexOf(findstage) {
+                        let pos = wholestage.startIndex.distanceTo(index)
+                        print("Found \(findstage) at position \(pos)")
+                        let temp = (wholestage[wholestage.startIndex.advancedBy(pos)..<wholestage.endIndex])
+                        stage = temp[temp.startIndex.advancedBy(1)..<temp.endIndex.predecessor()]
+                    }
+
+                    
+                }
+                
+                
                 
 
                 
+
+
+                let matches = item.componentsSeparatedByString("<div class=\"match-row")
                 print(matches.count)
                 
                 for match in matches
                 {
-                    
-                    
                     if(!match.containsString("score-5div")) //deleting volleyball
                     {
+                        team1 = ""
+                        team2 = ""
+                        score = ""
+                        matchstatus = ""
+                        gametime = ""
+                        gamedate = ""
+                        
                     let html_news = match
                     if let htmlDoc = HTML(html: html_news, encoding: NSUTF8StringEncoding) {
-//                        print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname right']")?.toHTML)
-//                        print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname left']")?.toHTML)
-//                        print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content)
-
                         if(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname right']")?.content != nil){
-//                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname right']")?.content)
                             let result = htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname right']")?.content!
-                            
-                            items_team1.append(result!)
-                            
-                            
+                            //items_team1.append(result!)
+                            team1 = result!
                         }
-                        
                         if(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname left']")?.content != nil){
-//                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname left']")?.content)
                             let result = htmlDoc.at_xpath("//div[@class='team-names']//div[@class='teamname left']")?.content!
-                            
-                            items_team2.append(result!)
-                            
-                            
-
-                        
+                          //  items_team2.append(result!)
+                            team2 = result!
                     }
-                        
                         if(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content != nil){
-//                            print(htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content)
                             let result = htmlDoc.at_xpath("//div[@class='team-names']//div[@class='scores-container']")?.content!
-                            
-                            
                             let trimmed=result!.stringByReplacingOccurrencesOfString("\r\n                                        ", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
-
+                           //  items_score.append(trimmed.stringByReplacingOccurrencesOfString("\n", withString: ""))
+                            let temp = trimmed.stringByReplacingOccurrencesOfString("\n", withString: "")
+                            score = String(temp.characters.reverse()).stringByTrimmingCharactersInSet(
+                                NSCharacterSet.whitespaceAndNewlineCharacterSet())
                             
-//                            print(trimmed.stringByReplacingOccurrencesOfString("\n", withString: ""))
-                            
-                            
-                            
-//                            print(trimmedString.stringByReplacingOccurrencesOfString("                                        ", withString: "" ).stringByReplacingOccurrencesOfString("                                        ", withString: "").stringByReplacingOccurrencesOfString("\n", withString:""))
-
-                            //                            print(trimmed.replace("\n", withString: "").stringByReplacingOccurrencesOfString("                                                    ", withString: ""))
-                            
-                             items_score.append(trimmed.stringByReplacingOccurrencesOfString("\n", withString: ""))
                         }
-                        
                         if(htmlDoc.at_xpath("//div[@class='match-status']//span")?.content != nil){
-//                            print(htmlDoc.at_xpath("//div[@class='match-status']//span")?.content)
                             let result = htmlDoc.at_xpath("//div[@class='match-status']//span")?.content!
-
                             let trimmed=result!.stringByReplacingOccurrencesOfString("\r\n", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
-
-                            items_matchstatus.append(trimmed)
-                            
-                            
-                            
-                            
+                           // items_matchstatus.append(trimmed)
+                            matchstatus = trimmed
                         }
-                        
                         if(htmlDoc.at_xpath("//div[@class='start-date']")?.content != nil){
-                            
-//                            print(htmlDoc.at_xpath("//div[@class='start-date']")?.content)
                             let result = htmlDoc.at_xpath("//div[@class='start-date']")?.content!
-                            
                             let trimmed=result!.stringByReplacingOccurrencesOfString("\n", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
-                            
-                            items_gamedate.append(trimmed)
-                            
-                            
-                            
-                            
+//                            items_gamedate.append(trimmed)
+                            gamedate = trimmed
                         }
-
                         if(htmlDoc.at_xpath("//div[@class='start-time']")?.content != nil){
-                            
-//                            print(htmlDoc.at_xpath("//div[@class='start-time']")?.content)
                             let result = htmlDoc.at_xpath("//div[@class='start-time']")?.content!
-                            
                             let trimmed=result!.stringByReplacingOccurrencesOfString("\n", withString: "").stringByReplacingOccurrencesOfString("                                                        ", withString: "")
-                            
-                            
-                            items_gametime.append(trimmed)
-                            
-                            
-                            
-                            
+//                            items_gametime.append(trimmed)
+                            gametime = trimmed
                         }
+                }
+                       
+                     
 
+                    }
+                    
+ 
+                    if (!team1.isEmpty)
+                    {
+                        print("ADDKNGFG " + team1)
+                        livescores.append(Livescore(team1: team1, team2: team2, livescore: score, matchstatus: matchstatus, gameDate: gamedate, gameTime: gametime, stage: stage))
+                    }
 
                 }
                 
-            
-            }
-                
-            }
         }
+            
     }
+        
     }
     
     
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.items_team2.count
+        return self.livescores.count
     }
     
     // make a cell for each cell index path
@@ -244,14 +242,13 @@ class LiveScoreViewController: UIViewController , UICollectionViewDataSource, UI
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         
-        cell.Team2.text = self.items_team2[indexPath.item]
-        cell.Team1.text = self.items_team1[indexPath.item]
-        cell.LiveScore.text = self.items_score[indexPath.item]
-        cell.MatchStatus.text = self.items_matchstatus[indexPath.item]
-        cell.gameDate.text = self.items_gamedate[indexPath.item]
-        cell.GameTime.text = self.items_gametime[indexPath.item]
-        print("GMAE TIME ---->")
-        print(cell.MatchStatus.text)
+        cell.Team2.text = self.livescores[indexPath.item].team2
+        cell.Team1.text = self.livescores[indexPath.item].team1
+        cell.LiveScore.text = self.livescores[indexPath.item].livescore
+        cell.MatchStatus.text = self.livescores[indexPath.item].matchstatus
+        cell.gameDate.text = self.livescores[indexPath.item].gameDate
+        cell.GameTime.text = self.livescores[indexPath.item].gameTime
+        cell.stage.text = self.livescores[indexPath.item].stage
         if(cell.MatchStatus.text!.containsString("نهایی"))
         {
             cell.MatchStatus.textColor = UIColor.redColor()

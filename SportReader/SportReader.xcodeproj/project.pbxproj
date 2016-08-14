@@ -15,6 +15,8 @@
 		D219C4AE1D4CEB44006A0B26 /* Varzesh3Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D219C4AD1D4CEB44006A0B26 /* Varzesh3Launch.storyboard */; };
 		D21C4FBD1D5DE22E00927414 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C4FBC1D5DE22E00927414 /* TabBarViewController.swift */; };
 		D25B62701D50E51A00ED3619 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B626F1D50E51A00ED3619 /* Reachability.swift */; };
+		D29F5DDA1D60C6D700228186 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F5DD91D60C6D700228186 /* Schedule.swift */; };
+		D29F5DDC1D60C88400228186 /* Livescore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F5DDB1D60C88400228186 /* Livescore.swift */; };
 		D2AC97F91D4D1B25000C3D85 /* NewsPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC97F81D4D1B25000C3D85 /* NewsPaperViewController.swift */; };
 		D2AC97FB1D4D1E8C000C3D85 /* NewsPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC97FA1D4D1E8C000C3D85 /* NewsPaper.swift */; };
 		D2AC97FF1D4D245D000C3D85 /* NewsPaperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC97FE1D4D245D000C3D85 /* NewsPaperTableViewCell.swift */; };
@@ -39,6 +41,8 @@
 		D219C4AD1D4CEB44006A0B26 /* Varzesh3Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Varzesh3Launch.storyboard; sourceTree = "<group>"; };
 		D21C4FBC1D5DE22E00927414 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D25B626F1D50E51A00ED3619 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		D29F5DD91D60C6D700228186 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		D29F5DDB1D60C88400228186 /* Livescore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Livescore.swift; sourceTree = "<group>"; };
 		D2AC97F81D4D1B25000C3D85 /* NewsPaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPaperViewController.swift; sourceTree = "<group>"; };
 		D2AC97FA1D4D1E8C000C3D85 /* NewsPaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPaper.swift; sourceTree = "<group>"; };
 		D2AC97FE1D4D245D000C3D85 /* NewsPaperTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPaperTableViewCell.swift; sourceTree = "<group>"; };
@@ -115,10 +119,12 @@
 				D20AE4611D4FA31B002E8298 /* LiveScoreCollectionViewCell.swift */,
 				D20AE45F1D4E0970002E8298 /* ScheduleViewController.swift */,
 				D20AE45D1D4E0955002E8298 /* ScheduleCollectionViewCell.swift */,
+				D29F5DDB1D60C88400228186 /* Livescore.swift */,
 				D2AC97F81D4D1B25000C3D85 /* NewsPaperViewController.swift */,
 				D2D57E1C1D4BB71B0006B4E9 /* NewsTableViewController.swift */,
 				D25B626F1D50E51A00ED3619 /* Reachability.swift */,
 				D2D57E061D4BA9E70006B4E9 /* NewsViewController.swift */,
+				D29F5DD91D60C6D700228186 /* Schedule.swift */,
 				D2AC97FA1D4D1E8C000C3D85 /* NewsPaper.swift */,
 				D2AC97FE1D4D245D000C3D85 /* NewsPaperTableViewCell.swift */,
 				D2D57E181D4BB4F50006B4E9 /* NewsTableViewCell.swift */,
@@ -260,9 +266,11 @@
 				D20AE4601D4E0970002E8298 /* ScheduleViewController.swift in Sources */,
 				D20AE45E1D4E0955002E8298 /* ScheduleCollectionViewCell.swift in Sources */,
 				D2AC97F91D4D1B25000C3D85 /* NewsPaperViewController.swift in Sources */,
+				D29F5DDA1D60C6D700228186 /* Schedule.swift in Sources */,
 				D2D57E191D4BB4F50006B4E9 /* NewsTableViewCell.swift in Sources */,
 				D2AC97FB1D4D1E8C000C3D85 /* NewsPaper.swift in Sources */,
 				D2AC97FF1D4D245D000C3D85 /* NewsPaperTableViewCell.swift in Sources */,
+				D29F5DDC1D60C88400228186 /* Livescore.swift in Sources */,
 				D2D57E1E1D4BB71B0006B4E9 /* NewsTableViewController.swift in Sources */,
 				D20AE4621D4FA31B002E8298 /* LiveScoreCollectionViewCell.swift in Sources */,
 				D2D57E051D4BA9E70006B4E9 /* AppDelegate.swift in Sources */,

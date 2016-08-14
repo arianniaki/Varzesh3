@@ -16,4 +16,5 @@ class LiveScoreCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var MatchStatus: UILabel!
     @IBOutlet weak var gameDate: UILabel!
     @IBOutlet weak var GameTime: UILabel!
+    @IBOutlet weak var stage: UILabel!
 }

@@ -17,7 +17,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var scheduleCollectionView: UICollectionView!
     let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
     var items = [String]()
-
+    var schedules = [Schedule]()
 
     
     override func viewDidLoad() {
@@ -62,21 +62,22 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 
         print("-----")
-        print(items)
+        print(schedules)
         // Do any additional setup after loading the view.
     }
 
     func reloadfunc()
     {
-        items.removeAll()
+        schedules.removeAll()
+//        items.removeAll()
         print("REMOVED")
-        print(items)
+        print(schedules)
         self.scheduleCollectionView.reloadData()
 
         loadschedule()
         self.scheduleCollectionView.reloadData()
         print("ADDED")
-        print(items)
+        print(schedules)
         self.dismissViewControllerAnimated(false, completion: nil)
         
 
@@ -117,8 +118,8 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
 //                        print(result)
 //                        print("_________")
                         
-                        
-                        items.append(result)
+                        schedules.append(Schedule(schedule: result))
+//                        items.append(result)
 
 
                     }
@@ -132,7 +133,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
 
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.items.count
+        return self.schedules.count
     }
     
     // make a cell for each cell index path
@@ -142,7 +143,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ScheduleCollectionViewCell
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.ScheduleLabel.text = self.items[indexPath.item]
+        cell.ScheduleLabel.text = self.schedules[indexPath.item].schedule
 
         if (cell.ScheduleLabel.text!.containsString("شبکه سه"))
         {
